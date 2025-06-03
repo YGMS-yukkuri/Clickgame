@@ -9,6 +9,7 @@ header{
     display: flex;
     width: 100%;
     flex-direction: row;
+    justify-content: space-between;
 }
 .clickUI{
     width: 30%;
@@ -17,7 +18,7 @@ header{
     flex-direction: column;
 }
 .upgrade{
-    width: 70%;
+    width: 60%;
 }
 .clickUI button{
     border: none;
@@ -35,13 +36,35 @@ header{
     justify-content: center;
     align-items: center;
 }
+.upgrademenu{
+    background-color: azure;
+    border: 1px solid;
+    border-radius: 60px 50px 50px 60px;
+    margin: 1px;
+    display: flex;
+}
+.upgrademenu a{
+    padding: 2%;
+    display: block;
+    border-left: 1px solid;
+    text-align: center;
+}
 .buttons{
+    margin: 1% ;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
 }
 .buttons button{
+    margin-right: 15px;
     width: 120px;
     height: 120px;
     border-radius: 100%;
+    border: none;
+    background-color: darkkhaki;
+    color: rgb(42, 11, 78);
+}
+.buttons button:hover{
+    background-color: #454326;
+    color: aliceblue;
 }
