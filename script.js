@@ -31,6 +31,13 @@ ClickUpgrade.addEventListener('click', function(){
 });
 AutoUpgrade1.addEventListener('click', function(){
     console.log("UPG1")
+    if (auto1Cost <= count){
+        count = count - auto1Cost;
+        auto1++;
+        auto1Cost = Math.floor(auto1Cost * 1.2);
+        document.getElementById("NOW").textContent = `NOW:${count}`;
+        document.getElementById("auto1UpgradeCost").textContent = `コスト:${auto1Cost}`;
+    };
 });
 AutoUpgrade2.addEventListener('click', function(){
     console.log("UPG2")
@@ -52,4 +59,4 @@ function Automaticloop(){
     count = count + temp;
     document.getElementById("NOW").textContent = `NOW:${count}`;
 }
-setInterval(Automaticloop(), 1000);
+setInterval(Automaticloop, 1000);
