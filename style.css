@@ -36,6 +36,20 @@ header{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 3%;
+    margin-top: 5%;
+    border: 10px ridge rgb(255, 187, 61);
+    border-radius: 2px;
+    width: 30%;
+}
+.autoinfo{
+    padding: 5%;
+}
+.NOWinfo{
+    padding: 5%;
+}
+.autoinfo a{
+    text-decoration: underline;
 }
 .upgrademenu{
     background-color: azure;

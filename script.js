@@ -116,10 +116,15 @@ function mainClick(){
 
 
 function Automaticloop(){
+    if (count >= 10000){
+
+    }
     let temp = 0; 
     temp = auto1 * 2 + auto2 * 5 + auto3 * 10;
     count = count + temp;
     document.getElementById("NOW").textContent = `NOW:${count}`;
+    document.getElementById("AUTO").textContent = `AUTO:${temp * 2}/s`;
+    document.getElementById("perclick").textContent = `PerClick:${zouka + 1}`
 }
 setInterval(Automaticloop, 500);
 
