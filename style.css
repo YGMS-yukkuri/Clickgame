@@ -110,3 +110,30 @@ header{
     background-color: rgb(112, 176, 216);
     transition: width 0.3s ease;
 }
+#game-clear-popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+.popup-content{
+    display: flex;
+    flex-direction: column;
+    background: whitesmoke;
+    padding: 0px 30px 30px 30px;
+    border-radius: 20px;
+    text-align: center;
+    margin: auto;
+}
+.popup-content button{
+    background-color: gainsboro;
+    border: 1px solid;
+}
+.popup-content button:hover{
+    background-color: rgb(149, 149, 149);
+}

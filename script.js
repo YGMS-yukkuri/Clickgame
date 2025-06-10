@@ -111,7 +111,7 @@ function updateprogress(point){
 
 function Automaticloop(){
     if (count >= 100000){
-
+        
     }
     let temp = 0; 
     temp = auto1 * 2 + auto2 * 5 + auto3 * 10;
