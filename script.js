@@ -5,6 +5,7 @@ const AutoUpgrade2 = document.querySelector('#AutoUpgrade2');
 const AutoUpgrade3 = document.querySelector('#AutoUpgrade3');
 const AutoUpgrade4 = document.querySelector('#AutoUpgrade4');
 const RandomMath39 = Math.floor(Math.random()) * 3 + 9;//
+const Clearpoint = 100000;
 let zouka = 0;
 let count = 0;
 let clickUpg = 0;
@@ -18,11 +19,9 @@ let auto2Cost = 100;
 let auto3Cost = 500;
 let auto4Cost = 2500;
 mainbutton.addEventListener('click', function(){
-    console.log("mainButton");
     mainClick();
 });
 ClickUpgrade.addEventListener('click', function(){
-    console.log("UpgradeButton")
     if (clickUpgCost <= count){
         count = count - clickUpgCost;
         clickUpg++;
@@ -39,7 +38,6 @@ ClickUpgrade.addEventListener('click', function(){
     };
 });
 AutoUpgrade1.addEventListener('click', function(){
-    console.log("UPG1")
     if (auto1Cost <= count){
         count = count - auto1Cost;
         auto1++;
@@ -55,7 +53,6 @@ AutoUpgrade1.addEventListener('click', function(){
     };
 });
 AutoUpgrade2.addEventListener('click', function(){
-    console.log("UPG2")
     if (auto2Cost <= count){
         count = count - auto2Cost;
         auto2++;
@@ -71,7 +68,6 @@ AutoUpgrade2.addEventListener('click', function(){
     };
 });
 AutoUpgrade3.addEventListener('click', function(){
-    console.log("UPG3");
     if (auto3Cost <= count){
         count = count - auto3Cost;
         auto3++;
@@ -87,7 +83,6 @@ AutoUpgrade3.addEventListener('click', function(){
     };
 });
 AutoUpgrade4.addEventListener('click', function(){
-    console.log("UPG4")
     if (auto4Cost <= count){
         count = count - auto4Cost;
         auto4++;
@@ -109,14 +104,13 @@ function mainClick(){
     document.getElementById("NOW").textContent = `NOW:${count}`;
 }
 
-
-
-
-
-
+function updateprogress(point){
+    const progbar = document.getElementById("progress-bar");
+    progbar.style.width = point + "%";
+}
 
 function Automaticloop(){
-    if (count >= 10000){
+    if (count >= 100000){
 
     }
     let temp = 0; 
@@ -124,11 +118,12 @@ function Automaticloop(){
     count = count + temp;
     document.getElementById("NOW").textContent = `NOW:${count}`;
     document.getElementById("AUTO").textContent = `AUTO:${temp * 2}/s`;
-    document.getElementById("perclick").textContent = `PerClick:${zouka + 1}`
+    document.getElementById("perclick").textContent = `PerClick:${zouka + 1}`;
+    progtemp = count / Clearpoint;
+    progtemp = progtemp * 100;
+    updateprogress(progtemp);
 }
 setInterval(Automaticloop, 500);
-
-
 
 function debug(a,n){
     switch(a){
