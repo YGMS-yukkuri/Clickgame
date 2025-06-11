@@ -1,28 +1,28 @@
 const mainbutton = document.querySelector("#mainbtn");
-const ClickUpgrade = document.querySelector("#ClickUpgrade");
-const AutoUpgrade1 = document.querySelector('#AutoUpgrade1');
-const AutoUpgrade2 = document.querySelector('#AutoUpgrade2');
-const AutoUpgrade3 = document.querySelector('#AutoUpgrade3');
-const AutoUpgrade4 = document.querySelector('#AutoUpgrade4');
+const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
+const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
+const FactoryUpgradeBtn = document.querySelector('#AutoUpgrade2');
+const GeneratorUpgradeBtn = document.querySelector('#AutoUpgrade3');
+const GodUpgradeBtn = document.querySelector('#AutoUpgrade4');
 const RandomMath39 = Math.floor(Math.random()) * 3 + 9;//
 const Clearpoint = 100000;
 let zouka = 0;
 let count = 0;
 let clickUpg = 0;
-let auto1 = 0;
-let auto2 = 0;
-let auto3 = 0;
-let auto4 = 0;
+let MachineUpgradeCount = 0;
+let FactoryUpgradeCount = 0;
+let GeneratorUpgradeCount = 0;
+let GodUpgradeCount = 0;
 let clickUpgCost = 10;
-let auto1Cost = 50;
-let auto2Cost = 100;
-let auto3Cost = 500;
-let auto4Cost = 2500;
+let MachineUpgradeCost = 50;
+let FactoryUpgradeCost = 100;
+let GeneratorUpgradeCost = 500;
+let GodUpgradeCost = 2500;
 let godpower = 1;
 mainbutton.addEventListener('click', function(){
     mainClick();
 });
-ClickUpgrade.addEventListener('click', function(){
+ClickUpgradeBtn.addEventListener('click', function(){
     if (clickUpgCost <= count){
         count = count - clickUpgCost;
         clickUpg++;
@@ -35,69 +35,69 @@ ClickUpgrade.addEventListener('click', function(){
         }
         document.getElementById("NOW").textContent = `NOW:${count}`;
         document.getElementById("ClickUpgradeCost").textContent = `コスト:${clickUpgCost}`;
-        ClickUpgrade.innerHTML = "クリック" + "<br>" + `アップグレード(${clickUpg})`;
+        ClickUpgradeBtn.innerHTML = "クリック" + "<br>" + `アップグレード(${clickUpg})`;
     };
 });
-AutoUpgrade1.addEventListener('click', function(){
-    if (auto1Cost <= count){
-        count = count - auto1Cost;
-        auto1++;
-        if (auto1 % 5 === 0){
-            auto1Cost = Math.floor(auto1Cost * (RandomMath39/10));
+MachineUpgradeBtn.addEventListener('click', function(){
+    if (MachineUpgradeCost <= count){
+        count = count - MachineUpgradeCost;
+        MachineUpgradeCount++;
+        if (MachineUpgradeCount % 5 === 0){
+            MachineUpgradeCost = Math.floor(MachineUpgradeCost * (RandomMath39/10));
         }
         else{
-            auto1Cost = Math.floor(auto1Cost * 1.2);
+            MachineUpgradeCost = Math.floor(MachineUpgradeCost * 1.2);
         }
         document.getElementById("NOW").textContent = `NOW:${count}`;
-        document.getElementById("auto1UpgradeCost").textContent = `コスト:${auto1Cost}`;
-        AutoUpgrade1.innerHTML = "機械化" + "<br>" + `(${auto1})`;
+        document.getElementById("auto1UpgradeCost").textContent = `コスト:${MachineUpgradeCost}`;
+        MachineUpgradeBtn.innerHTML = "機械化" + "<br>" + `(${MachineUpgradeCount})`;
     };
 });
-AutoUpgrade2.addEventListener('click', function(){
-    if (auto2Cost <= count){
-        count = count - auto2Cost;
-        auto2++;
-        if (auto2 % 5 === 0){
-            auto2Cost = Math.floor(auto2Cost * (RandomMath39/10));
+FactoryUpgradeBtn.addEventListener('click', function(){
+    if (FactoryUpgradeCost <= count){
+        count = count - FactoryUpgradeCost;
+        FactoryUpgradeCount++;
+        if (FactoryUpgradeCount % 5 === 0){
+            FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * (RandomMath39/10));
         }
         else{
-            auto2Cost = Math.floor(auto2Cost * 1.25);
+            FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * 1.25);
         }
         document.getElementById("NOW").textContent = `NOW:${count}`;
-        document.getElementById("auto2UpgradeCost").textContent = `コスト:${auto2Cost}`;
-        AutoUpgrade2.innerHTML = "工業化" + "<br>" + `(${auto2})`;
+        document.getElementById("auto2UpgradeCost").textContent = `コスト:${FactoryUpgradeCost}`;
+        FactoryUpgradeBtn.innerHTML = "工業化" + "<br>" + `(${FactoryUpgradeCount})`;
     };
 });
-AutoUpgrade3.addEventListener('click', function(){
-    if (auto3Cost <= count){
-        count = count - auto3Cost;
-        auto3++;
-        if (auto3 % 5 === 0){
-            auto3Cost = Math.floor(auto3Cost * (RandomMath39/10));
+GeneratorUpgradeBtn.addEventListener('click', function(){
+    if (GeneratorUpgradeCost <= count){
+        count = count - GeneratorUpgradeCost;
+        GeneratorUpgradeCount++;
+        if (GeneratorUpgradeCount % 5 === 0){
+            GeneratorUpgradeCost = Math.floor(GeneratorUpgradeCost * (RandomMath39/10));
         }
         else{
-            auto3Cost = Math.floor(auto3Cost * 1.3);
+            GeneratorUpgradeCost = Math.floor(GeneratorUpgradeCost * 1.3);
         }
         document.getElementById("NOW").textContent = `NOW:${count}`;
-        document.getElementById("auto3UpgradeCost").textContent = `コスト:${auto3Cost}`;
-        AutoUpgrade3.innerHTML = "ジェネレーター" + "<br>" + `(${auto3})`;
+        document.getElementById("auto3UpgradeCost").textContent = `コスト:${GeneratorUpgradeCost}`;
+        GeneratorUpgradeBtn.innerHTML = "ジェネレーター" + "<br>" + `(${GeneratorUpgradeCount})`;
     };
 });
-AutoUpgrade4.addEventListener('click', function(){
-    if (auto4Cost <= count){
-        count = count - auto4Cost;
-        auto4++;
+GodUpgradeBtn.addEventListener('click', function(){
+    if (GodUpgradeCost <= count){
+        count = count - GodUpgradeCost;
+        GodUpgradeCount++;
         godpower = godpower * 1.5;
         zouka = zouka * godpower;
-        if (auto4 % 5 === 0){
-            auto4Cost = Math.floor(auto4Cost * (RandomMath39/10));
+        if (GodUpgradeCount % 5 === 0){
+            GodUpgradeCost = Math.floor(GodUpgradeCost * (RandomMath39/10));
         }
         else{
-            auto4Cost = Math.floor(auto4Cost * 1.7);
+            GodUpgradeCost = Math.floor(GodUpgradeCost * 1.7);
         }
         document.getElementById("NOW").textContent = `NOW:${count}`;
-        document.getElementById("auto4UpgradeCost").textContent = `コスト:${auto4Cost}`;
-        AutoUpgrade4.innerHTML = "神の手" + "<br>" + `(${auto4})`;
+        document.getElementById("auto4UpgradeCost").textContent = `コスト:${GodUpgradeCost}`;
+        GodUpgradeBtn.innerHTML = "神の手" + "<br>" + `(${GodUpgradeCount})`;
     };
 })
 
@@ -116,7 +116,7 @@ function Automaticloop(){
         document.getElementById("game-clear-popup").style.display = "flex";
     }
     let temp = 0; 
-    temp = Math.floor(auto1 * 2 + auto2 * 5 + auto3 * 10 * godpower);
+    temp = Math.floor(MachineUpgradeCount * 2 + FactoryUpgradeCount * 5 + GeneratorUpgradeCount * 10 * godpower);
     count = count + temp;
     document.getElementById("NOW").textContent = `NOW:${count}`;
     document.getElementById("AUTO").textContent = `AUTO:${Math.floor(temp * 2)}/s`;
@@ -125,46 +125,46 @@ function Automaticloop(){
     progtemp = progtemp * 100;
     updateprogress(progtemp);
 }
-setInterval(Automaticloop, 500);
-
 function debug(a,n){
     switch(a){
         case "now":
             count = n;
             document.getElementById("NOW").textContent = `NOW:${count}`;
             break;
-        case "reset":
-            reset();
-            break;
-        default:
-            console.log("Invalid debug command");
-            break;
+            case "reset":
+                reset();
+                break;
+                default:
+                    console.log("Invalid debug command");
+                    break;
     }
 }
 function reset(){
     zouka = 0;
     count = 0;
     clickUpg = 0;
-    auto1 = 0;
-    auto2 = 0;
-    auto3 = 0;
-    auto4 = 0;
+    MachineUpgradeCount = 0;
+    FactoryUpgradeCount = 0;
+    GeneratorUpgradeCount = 0;
+    GodUpgradeCount = 0;
     clickUpgCost = 10;
-    auto1Cost = 50;
-    auto2Cost = 100;
-    auto3Cost = 500;
-    auto4Cost = 2500;
+    MachineUpgradeCost = 50;
+    FactoryUpgradeCost = 100;
+    FactoryUpgradeCost = 500;
+    GodUpgradeCost = 2500;
     document.getElementById("NOW").textContent = `NOW:${count}`;
     document.getElementById("ClickUpgradeCost").textContent = `コスト:${clickUpgCost}`;
-    document.getElementById("auto1UpgradeCost").textContent = `コスト:${auto1Cost}`;
-    document.getElementById("auto2UpgradeCost").textContent = `コスト:${auto2Cost}`;
-    document.getElementById("auto3UpgradeCost").textContent = `コスト:${auto3Cost}`;
-    document.getElementById("auto4UpgradeCost").textContent = `コスト:${auto4Cost}`;
-    ClickUpgrade.innerHTML = "クリック" + "<br>" + `アップグレード(${clickUpg})`;
-    AutoUpgrade1.innerHTML = "機械化" + "<br>" + `(${auto1})`;
-    AutoUpgrade2.innerHTML = "工業化" + "<br>" + `(${auto2})`;
-    AutoUpgrade3.innerHTML = "ジェネレーター" + "<br>" + `(${auto3})`;
-    AutoUpgrade4.innerHTML = "神の手" + "<br>" + `(${auto4})`;
+    document.getElementById("auto1UpgradeCost").textContent = `コスト:${MachineUpgradeCost}`;
+    document.getElementById("auto2UpgradeCost").textContent = `コスト:${FactoryUpgradeCost}`;
+    document.getElementById("auto3UpgradeCost").textContent = `コスト:${FactoryUpgradeCost}`;
+    document.getElementById("auto4UpgradeCost").textContent = `コスト:${GodUpgradeCost}`;
+    ClickUpgradeBtn.innerHTML = "クリック" + "<br>" + `アップグレード(${clickUpg})`;
+    MachineUpgradeBtn.innerHTML = "機械化" + "<br>" + `(${ClickUpgradeCount})`;
+    FactoryUpgradeBtn.innerHTML = "工業化" + "<br>" + `(${MachineUpgradeCount})`;
+    GeneratorUpgradeBtn.innerHTML = "ジェネレーター" + "<br>" + `(${FactoryUpgradeCount})`;
+    GodUpgradeBtn.innerHTML = "神の手" + "<br>" + `(${GodUpgradeCount})`;
     console.log("Game reset");
     document.getElementById("game-clear-popup").style.display = "none"
 }
+
+setInterval(Automaticloop, 500);
