@@ -18,6 +18,7 @@ let auto1Cost = 50;
 let auto2Cost = 100;
 let auto3Cost = 500;
 let auto4Cost = 2500;
+let godpower = 1;
 mainbutton.addEventListener('click', function(){
     mainClick();
 });
@@ -30,7 +31,7 @@ ClickUpgrade.addEventListener('click', function(){
             clickUpgCost = Math.floor(clickUpgCost * (RandomMath39/10));
         }
         else{
-            clickUpgCost = Math.floor(clickUpgCost * 1.2);
+            clickUpgCost = Math.floor(clickUpgCost * 1.1);
         }
         document.getElementById("NOW").textContent = `NOW:${count}`;
         document.getElementById("ClickUpgradeCost").textContent = `コスト:${clickUpgCost}`;
@@ -45,7 +46,7 @@ AutoUpgrade1.addEventListener('click', function(){
             auto1Cost = Math.floor(auto1Cost * (RandomMath39/10));
         }
         else{
-            auto1Cost = Math.floor(auto1Cost * 1.3);
+            auto1Cost = Math.floor(auto1Cost * 1.2);
         }
         document.getElementById("NOW").textContent = `NOW:${count}`;
         document.getElementById("auto1UpgradeCost").textContent = `コスト:${auto1Cost}`;
@@ -60,7 +61,7 @@ AutoUpgrade2.addEventListener('click', function(){
             auto2Cost = Math.floor(auto2Cost * (RandomMath39/10));
         }
         else{
-            auto2Cost = Math.floor(auto2Cost * 1.3);
+            auto2Cost = Math.floor(auto2Cost * 1.25);
         }
         document.getElementById("NOW").textContent = `NOW:${count}`;
         document.getElementById("auto2UpgradeCost").textContent = `コスト:${auto2Cost}`;
@@ -86,12 +87,13 @@ AutoUpgrade4.addEventListener('click', function(){
     if (auto4Cost <= count){
         count = count - auto4Cost;
         auto4++;
-        zouka = zouka + 50;
+        godpower = godpower * 1.5;
+        zouka = zouka * godpower;
         if (auto4 % 5 === 0){
             auto4Cost = Math.floor(auto4Cost * (RandomMath39/10));
         }
         else{
-            auto4Cost = Math.floor(auto4Cost * 1.3);
+            auto4Cost = Math.floor(auto4Cost * 1.7);
         }
         document.getElementById("NOW").textContent = `NOW:${count}`;
         document.getElementById("auto4UpgradeCost").textContent = `コスト:${auto4Cost}`;
@@ -100,7 +102,7 @@ AutoUpgrade4.addEventListener('click', function(){
 })
 
 function mainClick(){
-    count = count + zouka + 1;
+    count = Math.floor(count + zouka + 1);
     document.getElementById("NOW").textContent = `NOW:${count}`;
 }
 
@@ -111,14 +113,14 @@ function updateprogress(point){
 
 function Automaticloop(){
     if (count >= 100000){
-        
+        document.getElementById("game-clear-popup").style.display = "flex";
     }
     let temp = 0; 
-    temp = auto1 * 2 + auto2 * 5 + auto3 * 10;
+    temp = Math.floor(auto1 * 2 + auto2 * 5 + auto3 * 10 * godpower);
     count = count + temp;
     document.getElementById("NOW").textContent = `NOW:${count}`;
-    document.getElementById("AUTO").textContent = `AUTO:${temp * 2}/s`;
-    document.getElementById("perclick").textContent = `PerClick:${zouka + 1}`;
+    document.getElementById("AUTO").textContent = `AUTO:${Math.floor(temp * 2)}/s`;
+    document.getElementById("perclick").textContent = `PerClick:${Math.floor(zouka + 1)}`;
     progtemp = count / Clearpoint;
     progtemp = progtemp * 100;
     updateprogress(progtemp);
@@ -132,33 +134,37 @@ function debug(a,n){
             document.getElementById("NOW").textContent = `NOW:${count}`;
             break;
         case "reset":
-            zouka = 0;
-            count = 0;
-            clickUpg = 0;
-            auto1 = 0;
-            auto2 = 0;
-            auto3 = 0;
-            auto4 = 0;
-            clickUpgCost = 10;
-            auto1Cost = 50;
-            auto2Cost = 100;
-            auto3Cost = 500;
-            auto4Cost = 2500;
-            document.getElementById("NOW").textContent = `NOW:${count}`;
-            document.getElementById("ClickUpgradeCost").textContent = `コスト:${clickUpgCost}`;
-            document.getElementById("auto1UpgradeCost").textContent = `コスト:${auto1Cost}`;
-            document.getElementById("auto2UpgradeCost").textContent = `コスト:${auto2Cost}`;
-            document.getElementById("auto3UpgradeCost").textContent = `コスト:${auto3Cost}`;
-            document.getElementById("auto4UpgradeCost").textContent = `コスト:${auto4Cost}`;
-            ClickUpgrade.innerHTML = "クリック" + "<br>" + `アップグレード(${clickUpg})`;
-            AutoUpgrade1.innerHTML = "機械化" + "<br>" + `(${auto1})`;
-            AutoUpgrade2.innerHTML = "工業化" + "<br>" + `(${auto2})`;
-            AutoUpgrade3.innerHTML = "ジェネレーター" + "<br>" + `(${auto3})`;
-            AutoUpgrade4.innerHTML = "神の手" + "<br>" + `(${auto4})`;
-            console.log("Game reset");
+            reset();
             break;
         default:
             console.log("Invalid debug command");
             break;
     }
+}
+function reset(){
+    zouka = 0;
+    count = 0;
+    clickUpg = 0;
+    auto1 = 0;
+    auto2 = 0;
+    auto3 = 0;
+    auto4 = 0;
+    clickUpgCost = 10;
+    auto1Cost = 50;
+    auto2Cost = 100;
+    auto3Cost = 500;
+    auto4Cost = 2500;
+    document.getElementById("NOW").textContent = `NOW:${count}`;
+    document.getElementById("ClickUpgradeCost").textContent = `コスト:${clickUpgCost}`;
+    document.getElementById("auto1UpgradeCost").textContent = `コスト:${auto1Cost}`;
+    document.getElementById("auto2UpgradeCost").textContent = `コスト:${auto2Cost}`;
+    document.getElementById("auto3UpgradeCost").textContent = `コスト:${auto3Cost}`;
+    document.getElementById("auto4UpgradeCost").textContent = `コスト:${auto4Cost}`;
+    ClickUpgrade.innerHTML = "クリック" + "<br>" + `アップグレード(${clickUpg})`;
+    AutoUpgrade1.innerHTML = "機械化" + "<br>" + `(${auto1})`;
+    AutoUpgrade2.innerHTML = "工業化" + "<br>" + `(${auto2})`;
+    AutoUpgrade3.innerHTML = "ジェネレーター" + "<br>" + `(${auto3})`;
+    AutoUpgrade4.innerHTML = "神の手" + "<br>" + `(${auto4})`;
+    console.log("Game reset");
+    document.getElementById("game-clear-popup").style.display = "none"
 }
