@@ -131,12 +131,12 @@ function debug(a,n){
             count = n;
             document.getElementById("NOW").textContent = `NOW:${count}`;
             break;
-            case "reset":
-                reset();
-                break;
-                default:
-                    console.log("Invalid debug command");
-                    break;
+        case "reset":
+            reset();
+            break;
+        default:
+            console.log("Invalid debug command");
+            break;
     }
 }
 function reset(){
