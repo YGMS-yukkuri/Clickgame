@@ -112,7 +112,7 @@ function updateprogress(point){
 }
 
 function Automaticloop(){
-    if (count >= 100000){
+    if (count >= Clearpoint){
         document.getElementById("game-clear-popup").style.display = "flex";
     }
     let temp = 0; 
@@ -150,18 +150,18 @@ function reset(){
     clickUpgCost = 10;
     MachineUpgradeCost = 50;
     FactoryUpgradeCost = 100;
-    FactoryUpgradeCost = 500;
+    GeneratorUpgradeCost = 500;
     GodUpgradeCost = 2500;
     document.getElementById("NOW").textContent = `NOW:${count}`;
     document.getElementById("ClickUpgradeCost").textContent = `コスト:${clickUpgCost}`;
     document.getElementById("auto1UpgradeCost").textContent = `コスト:${MachineUpgradeCost}`;
     document.getElementById("auto2UpgradeCost").textContent = `コスト:${FactoryUpgradeCost}`;
-    document.getElementById("auto3UpgradeCost").textContent = `コスト:${FactoryUpgradeCost}`;
+    document.getElementById("auto3UpgradeCost").textContent = `コスト:${GeneratorUpgradeCost}`;
     document.getElementById("auto4UpgradeCost").textContent = `コスト:${GodUpgradeCost}`;
     ClickUpgradeBtn.innerHTML = "クリック" + "<br>" + `アップグレード(${clickUpg})`;
-    MachineUpgradeBtn.innerHTML = "機械化" + "<br>" + `(${ClickUpgradeCount})`;
-    FactoryUpgradeBtn.innerHTML = "工業化" + "<br>" + `(${MachineUpgradeCount})`;
-    GeneratorUpgradeBtn.innerHTML = "ジェネレーター" + "<br>" + `(${FactoryUpgradeCount})`;
+    MachineUpgradeBtn.innerHTML = "機械化" + "<br>" + `(${MachineUpgradeCount})`;
+    FactoryUpgradeBtn.innerHTML = "工業化" + "<br>" + `(${FactoryUpgradeCount})`;
+    GeneratorUpgradeBtn.innerHTML = "ジェネレーター" + "<br>" + `(${GeneratorUpgradeCount})`;
     GodUpgradeBtn.innerHTML = "神の手" + "<br>" + `(${GodUpgradeCount})`;
     console.log("Game reset");
     document.getElementById("game-clear-popup").style.display = "none"
