@@ -122,6 +122,21 @@ function updateprogress(point) {
     progbar.style.width = point + "%";
 }
 
+function Activate(){
+    if (count > 35){
+        MachineUpgMenu.style.display = "flex";
+    }
+    if(count > 70){
+        FactoryUpgMenu.style.display = "flex";
+    }
+    if(count > 350){
+        GeneratorUpgMenu.style.display = "flex";
+    }
+    if(count > 2000){
+        GodUpgMenu.style.display = "flex";
+        GodActive = 1;
+    }
+}
 function Automaticloop() {
     if (count >= Clearpoint) {
         document.getElementById("game-clear-popup").style.display = "flex";
@@ -139,21 +154,8 @@ function Automaticloop() {
     progtemp = progtemp * 100;
     updateprogress(progtemp);
 }
-function Activate(){
-    if (count > 35){
-        MachineUpgMenu.style.display = "flex";
-    }
-    if(count > 70){
-        FactoryUpgMenu.style.display = "flex";
-    }
-    if(count > 350){
-        GeneratorUpgMenu.style.display = "flex";
-    }
-    if(count > 2000){
-        GodUpgMenu.style.display = "flex";
-        GodActive = 1;
-    }
-}
+
+
 function debug(a, n) {
     switch (a) {
         case "now":
