@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="jp">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         クリックゲーム
@@ -33,22 +35,22 @@
                         <a class="txt2" id="ClickUpgradeCost">コスト:10</a>
                         <a class="txt1">1クリック当たりの増加量を強化します</a>
                     </div>
-                    <div class="upgrademenu">
-                        <button class="upgrades" id="AutoUpgrade1">機械化<br>(0)</button>    
+                    <div class="upgrademenu" id="MachineUpgMenu" style="display: none;">
+                        <button class="upgrades" id="AutoUpgrade1">機械化<br>(0)</button>
                         <a class="txt2" id="auto1UpgradeCost">コスト:50</a>
                         <a class="txt1">機械を導入して自動でクリック数を稼ぎます</a>
                     </div>
-                    <div class="upgrademenu">
+                    <div class="upgrademenu" id="FactoryUpgMenu" style="display: none;">
                         <button class="upgrades" id="AutoUpgrade2">工業化<br>(0)</button>
                         <a class="txt2" id="auto2UpgradeCost">コスト:100</a>
                         <a class="txt1">工場を導入して自動でクリック数を稼ぎます</a>
                     </div>
-                    <div class="upgrademenu">
+                    <div class="upgrademenu" id="GeneratorUpgMenu" style="display: none;">
                         <button class="upgrades" id="AutoUpgrade3">ジェネレーター<br>(0)</button>
                         <a class="txt2" id="auto3UpgradeCost">コスト:500</a>
                         <a class="txt1">ジェネレーターを強化して、自動でクリック数を稼ぎます</a>
                     </div>
-                    <div class="upgrademenu">
+                    <div class="upgrademenu" id="GodUpgMenu" style="display: none;">
                         <button class="upgrades" id="AutoUpgrade4">神の手<br>(0)</button>
                         <a class="txt2" id="auto4UpgradeCost">コスト:2500</a>
                         <a class="txt1">神の祝福によってすべての増加量を強化します</a>
@@ -56,6 +58,8 @@
                 </div>
             </div>
         </div>
+    </main>
+    <footer>
         <div class="clear">
             <a>クリックが100,000でゲームクリア！！</a>
             <div id="progress-box">
@@ -66,13 +70,11 @@
             <div class="popup-content">
                 <h1>ゲームクリア！</h1>
                 <p>もう一度プレイする場合は下のボタンをクリックしてください</p>
-                <button onclick="debug(`reset`)";>もう一度遊ぶ！</button>
+                <button onclick="debug(`reset`)" ;>もう一度遊ぶ！</button>
             </div>
         </div>
-    </main>
-    <footer>
-
     </footer>
 </body>
 <script src="script.js"></script>
+
 </html>
