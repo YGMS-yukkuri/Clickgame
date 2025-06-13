@@ -22,14 +22,14 @@ header{
 }
 .clickUI button{
     border: none;
-    background-color: rgba(141, 255, 255, 0.952);
+    background-color: rgba(59, 202, 202, 0.952);
     border-radius: 100%;
     width: 300px;
     height: 300px;
     transition: all 0.2s ease-in-out;
 }
 .clickUI button:hover{
-    background-color: rgba(141, 255, 228, 0.952);
+    background-color: rgba(100, 232, 232, 0.952);
     width: 330px;
     height: 330px;
     transition: all 0.2s ease-in-out;
@@ -66,12 +66,12 @@ header{
     margin: 0;
     padding: 2%;
 }
-.txt1{
-    width: 60%;
-    border-left: thick double black;   
-}
 .txt2{
     width: 15%;
+    border-left: thick double black;   
+}
+.txt1{
+    width: 60%;
     border-left: 1px solid;
     text-align: left;
 }
@@ -85,12 +85,12 @@ header{
     height: 120px;
     border-radius: 100%;
     border: none;
-    background-color: darkkhaki;
+    background-color: rgb(221, 183, 95);
     color: rgb(42, 11, 78);
     transition: all 0.2s ease;
 }
 .buttons button:hover{
-    background-color: #454326;
+    background-color: rgb(131, 109, 56);
     color: aliceblue;
     transition: all 0.2s ease;
 }
