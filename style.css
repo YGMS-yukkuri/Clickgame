@@ -5,6 +5,9 @@ body{
 header{
     text-align: center;
 }
+main{
+    position: relative;
+}
 .maingameWidow{
     display: flex;
     width: 100%;

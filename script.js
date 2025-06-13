@@ -6,6 +6,10 @@ const GeneratorUpgradeBtn = document.querySelector('#AutoUpgrade3');
 const GodUpgradeBtn = document.querySelector('#AutoUpgrade4');
 const RandomMath39 = Math.floor(Math.random()) * 3 + 9;//
 const Clearpoint = 100000;
+const MachineUpgMenu = document.getElementById("MachineUpgMenu");
+const FactoryUpgMenu = document.getElementById("FactoryUpgMenu");
+const GeneratorUpgMenu = document.getElementById("GeneratorUpgMenu");
+const GodUpgMenu = document.getElementById("GodUpgMenu");
 let zouka = 0;
 let count = 0;
 let clickUpg = 0;
@@ -18,6 +22,7 @@ let MachineUpgradeCost = 50;
 let FactoryUpgradeCost = 100;
 let GeneratorUpgradeCost = 500;
 let GodUpgradeCost = 2500;
+let GodActive = 0;
 let godpower = 1;
 mainbutton.addEventListener('click', function () {
     mainClick();
@@ -121,6 +126,9 @@ function Automaticloop() {
     if (count >= Clearpoint) {
         document.getElementById("game-clear-popup").style.display = "flex";
     }
+    if (GodActive === 0){
+        Activate();    
+    }
     let temp = 0;
     temp = Math.floor(MachineUpgradeCount * 2 + FactoryUpgradeCount * 5 + GeneratorUpgradeCount * 10 * godpower);
     count = count + temp;
@@ -130,6 +138,21 @@ function Automaticloop() {
     progtemp = count / Clearpoint;
     progtemp = progtemp * 100;
     updateprogress(progtemp);
+}
+function Activate(){
+    if (count > 35){
+        MachineUpgMenu.style.display = "flex";
+    }
+    if(count > 70){
+        FactoryUpgMenu.style.display = "flex";
+    }
+    if(count > 350){
+        GeneratorUpgMenu.style.display = "flex";
+    }
+    if(count > 2000){
+        GodUpgMenu.style.display = "flex";
+        GodActive = 1;
+    }
 }
 function debug(a, n) {
     switch (a) {
