@@ -181,6 +181,12 @@ function reset() {
     FactoryUpgradeCost = 100;
     GeneratorUpgradeCost = 500;
     GodUpgradeCost = 2500;
+    GodActive = 0;
+    godpower = 1;
+    MachineUpgMenu.style.display = "none";
+    FactoryUpgMenu.style.display = "none";
+    GeneratorUpgMenu.style.display = "none";
+    GodUpgMenu.style.display = "none";
     document.getElementById("NOW").textContent = `NOW:${count}`;
     document.getElementById("ClickUpgradeCost").textContent = `コスト:${clickUpgCost}`;
     document.getElementById("auto1UpgradeCost").textContent = `コスト:${MachineUpgradeCost}`;
