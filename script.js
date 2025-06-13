@@ -23,6 +23,7 @@ let GeneratorUpgradeCost = 500;
 let GodUpgradeCost = 2500;
 let GodActive = 0;
 let godpower = 1;
+let Active = 1;
 function randommath(){
     return Math.floor(Math.random() * 3) + 8; // 8, 9, 10のいずれかをランダムに返す
 }
@@ -143,8 +144,12 @@ function Activate(){
     }
 }
 function Automaticloop() {
+    if (Active === 0) {
+        return;
+    }
     if (count >= Clearpoint) {
         document.getElementById("game-clear-popup").style.display = "flex";
+        Active = 0;
     }
     if (GodActive === 0){
         Activate();    
