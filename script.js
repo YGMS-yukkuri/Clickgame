@@ -4,7 +4,7 @@ const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
 const FactoryUpgradeBtn = document.querySelector('#AutoUpgrade2');
 const GeneratorUpgradeBtn = document.querySelector('#AutoUpgrade3');
 const GodUpgradeBtn = document.querySelector('#AutoUpgrade4');
-const RandomMath39 = Math.floor(Math.random()) * 3 + 9;//
+const RandomMath39 = Math.floor(Math.random()* 3) + 9;//
 const Clearpoint = 100000;
 const MachineUpgMenu = document.getElementById("MachineUpgMenu");
 const FactoryUpgMenu = document.getElementById("FactoryUpgMenu");
@@ -133,7 +133,7 @@ function Automaticloop() {
     temp = Math.floor(MachineUpgradeCount * 2 + FactoryUpgradeCount * 5 + GeneratorUpgradeCount * 10 * godpower);
     count = count + temp;
     document.getElementById("NOW").textContent = `NOW:${count}`;
-    document.getElementById("AUTO").textContent = `AUTO:${Math.floor(temp * 2)}/s`;
+    document.getElementById("AUTO").textContent = `AUTO:${Math.floor(temp * 2)}/s`;//0.5秒ごとに実行されるので2倍
     document.getElementById("perclick").textContent = `PerClick:${Math.floor(zouka + 1)}`;
     progtemp = count / Clearpoint;
     progtemp = progtemp * 100;
@@ -198,8 +198,9 @@ function reset() {
     FactoryUpgradeBtn.innerHTML = "工業化" + "<br>" + `(${FactoryUpgradeCount})`;
     GeneratorUpgradeBtn.innerHTML = "ジェネレーター" + "<br>" + `(${GeneratorUpgradeCount})`;
     GodUpgradeBtn.innerHTML = "神の手" + "<br>" + `(${GodUpgradeCount})`;
-    console.log("Game reset");
     document.getElementById("game-clear-popup").style.display = "none"
+    updateprogress(0);
+    console.log("Game has been reset.");
 }
 
 setInterval(Automaticloop, 500);
