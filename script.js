@@ -106,7 +106,7 @@ GodUpgradeBtn.addEventListener('click', function () {
     count = count - GodUpgradeCost;
     GodUpgradeCount++;
     godpower = godpower * 2;
-    zouka = zouka * godpower;
+    zouka = zouka * godpower * 3 / 2;
     if (GodUpgradeCount % 5 === 0) {
         GodUpgradeCost = Math.floor(GodUpgradeCost * (randommath() / 10));
     }
