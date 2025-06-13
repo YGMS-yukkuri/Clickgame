@@ -4,7 +4,6 @@ const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
 const FactoryUpgradeBtn = document.querySelector('#AutoUpgrade2');
 const GeneratorUpgradeBtn = document.querySelector('#AutoUpgrade3');
 const GodUpgradeBtn = document.querySelector('#AutoUpgrade4');
-const RandomMath39 = Math.floor(Math.random()* 3) + 9;//
 const Clearpoint = 100000;
 const MachineUpgMenu = document.getElementById("MachineUpgMenu");
 const FactoryUpgMenu = document.getElementById("FactoryUpgMenu");
@@ -24,8 +23,14 @@ let GeneratorUpgradeCost = 500;
 let GodUpgradeCost = 2500;
 let GodActive = 0;
 let godpower = 1;
+function randommath(){
+    return Math.floor(Math.random() * 3) + 8; // 8, 9, 10のいずれかをランダムに返す
+}
+
+
 mainbutton.addEventListener('click', function () {
     mainClick();
+    console.log(randommath())
 });
 ClickUpgradeBtn.addEventListener('click', function () {
     if (clickUpgCost > count) {
@@ -35,7 +40,7 @@ ClickUpgradeBtn.addEventListener('click', function () {
     clickUpg++;
     zouka++;
     if (zouka % 5 === 0) {
-        clickUpgCost = Math.floor(clickUpgCost * (RandomMath39 / 10));
+        clickUpgCost = Math.floor(clickUpgCost * (randommath() / 10));
     }
     else {
         clickUpgCost = Math.floor(clickUpgCost * 1.1);
@@ -52,7 +57,7 @@ MachineUpgradeBtn.addEventListener('click', function () {
     count = count - MachineUpgradeCost;
     MachineUpgradeCount++;
     if (MachineUpgradeCount % 5 === 0) {
-        MachineUpgradeCost = Math.floor(MachineUpgradeCost * (RandomMath39 / 10));
+        MachineUpgradeCost = Math.floor(MachineUpgradeCost * (randommath() / 10));
     }
     else {
         MachineUpgradeCost = Math.floor(MachineUpgradeCost * 1.2);
@@ -68,7 +73,7 @@ FactoryUpgradeBtn.addEventListener('click', function () {
     count = count - FactoryUpgradeCost;
     FactoryUpgradeCount++;
     if (FactoryUpgradeCount % 5 === 0) {
-        FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * (RandomMath39 / 10));
+        FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * (randommath() / 10));
     }
     else {
         FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * 1.25);
@@ -84,7 +89,7 @@ GeneratorUpgradeBtn.addEventListener('click', function () {
     count = count - GeneratorUpgradeCost;
     GeneratorUpgradeCount++;
     if (GeneratorUpgradeCount % 5 === 0) {
-        GeneratorUpgradeCost = Math.floor(GeneratorUpgradeCost * (RandomMath39 / 10));
+        GeneratorUpgradeCost = Math.floor(GeneratorUpgradeCost * (randommath() / 10));
     }
     else {
         GeneratorUpgradeCost = Math.floor(GeneratorUpgradeCost * 1.3);
@@ -102,7 +107,7 @@ GodUpgradeBtn.addEventListener('click', function () {
     godpower = godpower * 2;
     zouka = zouka * godpower;
     if (GodUpgradeCount % 5 === 0) {
-        GodUpgradeCost = Math.floor(GodUpgradeCost * (RandomMath39 / 10));
+        GodUpgradeCost = Math.floor(GodUpgradeCost * (randommath() / 10));
     }
     else {
         GodUpgradeCost = Math.floor(GodUpgradeCost * 1.7);
