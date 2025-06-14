@@ -8,6 +8,14 @@ const MachineUpgMenu = document.getElementById("MachineUpgMenu");
 const FactoryUpgMenu = document.getElementById("FactoryUpgMenu");
 const GeneratorUpgMenu = document.getElementById("GeneratorUpgMenu");
 const GodUpgMenu = document.getElementById("GodUpgMenu");
+const progbar = document.getElementById("progress-bar");
+const NowDisplay = document.getElementById("NOW");
+const ClickUpgCostDisplay = document.getElementById("ClickUpgradeCost");
+const MachineUpgCostDisplay = document.getElementById("auto1UpgradeCost");
+const FactoryUpgCostDisplay = document.getElementById("auto2UpgradeCost");
+const GeneratorUpgCostDisplay = document.getElementById("auto3UpgradeCost");
+const GodUpgCostDisplay = document.getElementById("auto4UpgradeCost");
+const GameClearDisplay = document.getElementById("game-clear-popup");
 const Clearpoint = 100000;
 let zouka = 0;
 let count = 0;
@@ -132,33 +140,32 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
 
 function mainClick() {//クリックボタンの処理
     count = Math.floor(count + zouka + 1);
-    document.getElementById("NOW").textContent = `資産:${count}`;
+    NowDisplay.textContent = `資産:${count}`;
 }
 
 function updateprogress(point) {//プログレスバーの更新
-    const progbar = document.getElementById("progress-bar");
     progbar.style.width = point + "%";
 }
 function updateUpgradeInfo() {//アップグレード情報の更新
     //クリックアップグレード
-    document.getElementById("NOW").textContent = `資産:${count}`;
-    document.getElementById("ClickUpgradeCost").textContent = `コスト:${clickUpgCost}`;
+    NowDisplay.textContent = `資産:${count}`;
+    ClickUpgCostDisplay.textContent = `コスト:${clickUpgCost}`;
     ClickUpgradeBtn.innerHTML = "クリック" + "<br>" + `アップグレード(${clickUpg})`;
     //機械化
-    document.getElementById("NOW").textContent = `資産:${count}`;
-    document.getElementById("auto1UpgradeCost").textContent = `コスト:${MachineUpgradeCost}`;
+    NowDisplay.textContent = `資産:${count}`;
+    MachineUpgCostDisplay.textContent = `コスト:${MachineUpgradeCost}`;
     MachineUpgradeBtn.innerHTML = "機械化" + "<br>" + `(${MachineUpgradeCount})`;
     //工業化
-    document.getElementById("NOW").textContent = `資産:${count}`;
-    document.getElementById("auto2UpgradeCost").textContent = `コスト:${FactoryUpgradeCost}`;
+    NowDisplay.textContent = `資産:${count}`;
+    FactoryUpgCostDisplay.textContent = `コスト:${FactoryUpgradeCost}`;
     FactoryUpgradeBtn.innerHTML = "工業化" + "<br>" + `(${FactoryUpgradeCount})`;
     //ジェネレーター
-    document.getElementById("NOW").textContent = `資産:${count}`;
-    document.getElementById("auto3UpgradeCost").textContent = `コスト:${GeneratorUpgradeCost}`;
+    NowDisplay.textContent = `資産:${count}`;
+    GeneratorUpgCostDisplay.textContent = `コスト:${GeneratorUpgradeCost}`;
     GeneratorUpgradeBtn.innerHTML = "ジェネレーター" + "<br>" + `(${GeneratorUpgradeCount})`;
     //神の祝福
-    document.getElementById("NOW").textContent = `資産:${count}`;
-    document.getElementById("auto4UpgradeCost").textContent = `コスト:${GodUpgradeCost}`;
+    NowDisplay.textContent = `資産:${count}`;
+    GodUpgCostDisplay.textContent = `コスト:${GodUpgradeCost}`;
     GodUpgradeBtn.innerHTML = "神の祝福" + "<br>" + `(${GodUpgradeCount})`;
 }
 function Activate() {//アップグレードを表示させる関数
@@ -181,7 +188,7 @@ function Automaticloop() {//自動処理
         return;
     }
     if (count >= Clearpoint) {//クリア条件を満たしたかの判断
-        document.getElementById("game-clear-popup").style.display = "flex";
+        GameClearDisplay.style.display = "flex";
         isGameActive = false;
     }
     if (!isGodDisplay) {//神の祝福が表示されているかどうか
@@ -190,7 +197,7 @@ function Automaticloop() {//自動処理
     let temp = 0;
     temp = Math.floor(MachineUpgradeCount * 2 + FactoryUpgradeCount * 5 + GeneratorUpgradeCount * 10 * godpower);
     count = count + temp;//自動化によって増えた量を資産に加算
-    document.getElementById("NOW").textContent = `資産:${count}`;
+    NowDisplay.textContent = `資産:${count}`;
     document.getElementById("AUTO").textContent = `AUTO:${Math.floor(temp * 2)}/s`;//0.5秒ごとに実行されるので2倍
     document.getElementById("perclick").textContent = `PerClick:${Math.floor(zouka + 1)}`;
     //プログレスバー用の計算処理
@@ -206,7 +213,7 @@ function debug(a, n) {//コンソールで叩けるやつ
     switch (a) {
         case "now":
             count = n;
-            document.getElementById("NOW").textContent = `資産:${count}`;
+            NowDisplay.textContent = `資産:${count}`;
             break;
         case "reset":
             reset();
@@ -236,18 +243,18 @@ function reset() {//ゲームのリセットを行うやつ
     FactoryUpgMenu.style.display = "none";
     GeneratorUpgMenu.style.display = "none";
     GodUpgMenu.style.display = "none";
-    document.getElementById("NOW").textContent = `資産:${count}`;
-    document.getElementById("ClickUpgradeCost").textContent = `コスト:${clickUpgCost}`;
-    document.getElementById("auto1UpgradeCost").textContent = `コスト:${MachineUpgradeCost}`;
-    document.getElementById("auto2UpgradeCost").textContent = `コスト:${FactoryUpgradeCost}`;
-    document.getElementById("auto3UpgradeCost").textContent = `コスト:${GeneratorUpgradeCost}`;
-    document.getElementById("auto4UpgradeCost").textContent = `コスト:${GodUpgradeCost}`;
+    NowDisplay.textContent = `資産:${count}`;
+    ClickUpgCostDisplay.textContent = `コスト:${clickUpgCost}`;
+    MachineUpgCostDisplay.textContent = `コスト:${MachineUpgradeCost}`;
+    FactoryUpgCostDisplay.textContent = `コスト:${FactoryUpgradeCost}`;
+    GeneratorUpgCostDisplay.textContent = `コスト:${GeneratorUpgradeCost}`;
+    GodUpgCostDisplay.textContent = `コスト:${GodUpgradeCost}`;
     ClickUpgradeBtn.innerHTML = "クリック" + "<br>" + `アップグレード(${clickUpg})`;
     MachineUpgradeBtn.innerHTML = "機械化" + "<br>" + `(${MachineUpgradeCount})`;
     FactoryUpgradeBtn.innerHTML = "工業化" + "<br>" + `(${FactoryUpgradeCount})`;
     GeneratorUpgradeBtn.innerHTML = "ジェネレーター" + "<br>" + `(${GeneratorUpgradeCount})`;
     GodUpgradeBtn.innerHTML = "神の手" + "<br>" + `(${GodUpgradeCount})`;
-    document.getElementById("game-clear-popup").style.display = "none"
+    GameClearDisplay.style.display = "none"
     updateprogress(0);
     console.log("Game has been reset.");
 }
