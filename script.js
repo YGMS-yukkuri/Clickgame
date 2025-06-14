@@ -24,7 +24,7 @@ let GodUpgradeCost = 2500;
 let godpower = 1;
 let isGodActive = false;
 let isActive = true;
-function randommath(){
+function randommath() {
     return Math.floor(Math.random() * 3) + 8; // 8, 9, 10のいずれかをランダムに返す
 }
 
@@ -105,13 +105,37 @@ GodUpgradeBtn.addEventListener('click', function () {
     count = count - GodUpgradeCost;
     GodUpgradeCount++;
     godpower = godpower * 2;
-    zouka = zouka * godpower * 3 / 2;
+    if (godpower > 4) {
+        let temp = zouka * godpower * 3 / 2;
+        if (temp > 100000) {
+            zouka = zouka + 10000;
+        }
+        else if (temp > 50000) {
+            zouka = Math.floor(zouka * godpower * 0.2);
+        }
+        else if (temp > 20000) {
+            zouka = Math.floor(zouka * godpower * 0.3);
+        }
+        else if (temp > 10000) {
+            zouka = Math.floor(zouka * godpower * 0.4);
+        }
+        else if (temp > 5000) {
+            zouka = Math.floor(zouka * godpower * 0.6);
+        }
+        else {
+            zouka = Math.floor(zouka * godpower * 0.8);
+        }
+    }
+    else {
+        zouka = zouka * godpower * 3 / 2;
+    }
     if (GodUpgradeCount % 5 === 0) {
         GodUpgradeCost = Math.floor(GodUpgradeCost * (randommath() / 10));
     }
     else {
         GodUpgradeCost = Math.floor(GodUpgradeCost * 1.7);
     }
+    console.log(`God Upgrade Count: ${GodUpgradeCount}, God Power: ${godpower}`);
     document.getElementById("NOW").textContent = `NOW:${count}`;
     document.getElementById("auto4UpgradeCost").textContent = `コスト:${GodUpgradeCost}`;
     GodUpgradeBtn.innerHTML = "神の手" + "<br>" + `(${GodUpgradeCount})`;
@@ -127,17 +151,17 @@ function updateprogress(point) {
     progbar.style.width = point + "%";
 }
 
-function Activate(){
-    if (count > 35){
+function Activate() {
+    if (count > 35) {
         MachineUpgMenu.style.display = "flex";
     }
-    if(count > 70){
+    if (count > 70) {
         FactoryUpgMenu.style.display = "flex";
     }
-    if(count > 350){
+    if (count > 350) {
         GeneratorUpgMenu.style.display = "flex";
     }
-    if(count > 2000){
+    if (count > 2000) {
         GodUpgMenu.style.display = "flex";
         isGodActive = true;
     }
@@ -151,7 +175,7 @@ function Automaticloop() {
         isActive = false;
     }
     if (!isGodActive) {
-        Activate();    
+        Activate();
     }
     let temp = 0;
     temp = Math.floor(MachineUpgradeCount * 2 + FactoryUpgradeCount * 5 + GeneratorUpgradeCount * 10 * godpower);
