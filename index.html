@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="clear">
-            <a>クリックが100,000(ゲージ満タン)でゲームクリア！！</a>
+            <a id="progress-message">ゲージ満タンでゲームクリア！！</a>
             <div id="progress-box">
                 <div id="progress-bar"></div>
             </div>
@@ -76,7 +76,18 @@
             <div class="popup-content">
                 <h1 class="setsumei_h1">ゲーム説明</h1>
                 <p>クリックして資産を増やし、アップグレードをしながらゲームクリアを目指してください！</p>
-                <p>資産が100,000に達するとゲームクリアです。</p>
+                <p>クリアボーダーを設定してください。</p>
+                <p>デフォルトは100,000です。</p>
+                <select id="difficulty">
+                    <option value="10000">10,000</option>
+                    <option value="20000">20,000</option>
+                    <option value="50000">50,000</option>
+                    <option value="100000" selected>100,000</option>
+                    <option value="500000">500,000</option>
+                    <option value="1000000">1,000,000</option>
+                    <option value="5000000">5,000,000</option>
+                    <option value="10000000">10,000,000</option>
+                </select>
                 <button onclick="setsumei_close()">ゲーム開始！</button>
             </div>
         </div>

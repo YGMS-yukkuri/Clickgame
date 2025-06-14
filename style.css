@@ -170,6 +170,12 @@ main{
     border-bottom: 1px solid black;
     width: 100%;
 }
+.popup-content select{
+    border: 1px solid;
+    width: 50%;
+    text-align: center;
+    font-size: large;
+}
 #game-setsumei-popup button:hover{
     background-color: rgb(250, 144, 144);
     border: 1px double;

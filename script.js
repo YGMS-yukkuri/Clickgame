@@ -9,6 +9,7 @@ const FactoryUpgMenu = document.getElementById("FactoryUpgMenu");
 const GeneratorUpgMenu = document.getElementById("GeneratorUpgMenu");
 const GodUpgMenu = document.getElementById("GodUpgMenu");
 const progbar = document.getElementById("progress-bar");
+const progbarText = document.getElementById("progress-message");
 const NowDisplay = document.getElementById("NOW");
 const ClickUpgCostDisplay = document.getElementById("ClickUpgradeCost");
 const MachineUpgCostDisplay = document.getElementById("auto1UpgradeCost");
@@ -16,7 +17,9 @@ const FactoryUpgCostDisplay = document.getElementById("auto2UpgradeCost");
 const GeneratorUpgCostDisplay = document.getElementById("auto3UpgradeCost");
 const GodUpgCostDisplay = document.getElementById("auto4UpgradeCost");
 const GameClearDisplay = document.getElementById("game-clear-popup");
-const Clearpoint = 100000;
+const DifficultySelect = document.getElementById("difficulty");
+
+let Clearpoint;
 let zouka = 0;
 let count = 0;
 let clickUpg = 0;
@@ -31,7 +34,7 @@ let GeneratorUpgradeCost = 500;
 let GodUpgradeCost = 2500;
 let godpower = 1;
 let isGodDisplay = false;
-let isGameActive = true;
+let isGameActive = false;
 
 function randommath() {
     return Math.floor(Math.random() * 3) + 8; // 8, 9, 10のいずれかをランダムに返す
@@ -140,7 +143,7 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
 
 function mainClick() {//クリックボタンの処理
     count = Math.floor(count + zouka + 1);
-    NowDisplay.textContent = `資産:${count}`;
+    NowDisplay.textContent = `資産:${count.toLocaleString()}`;
 }
 
 function updateprogress(point) {//プログレスバーの更新
@@ -148,25 +151,22 @@ function updateprogress(point) {//プログレスバーの更新
 }
 function updateUpgradeInfo() {//アップグレード情報の更新
     //クリックアップグレード
-    NowDisplay.textContent = `資産:${count}`;
-    ClickUpgCostDisplay.textContent = `コスト:${clickUpgCost}`;
-    ClickUpgradeBtn.innerHTML = "クリック" + "<br>" + `アップグレード(${clickUpg})`;
+    ClickUpgCostDisplay.textContent = `コスト:${clickUpgCost.toLocaleString()}`;
+    ClickUpgradeBtn.innerHTML = "クリック" + "<br>" + `アップグレード(${clickUpg.toLocaleString()})`;
     //機械化
-    NowDisplay.textContent = `資産:${count}`;
-    MachineUpgCostDisplay.textContent = `コスト:${MachineUpgradeCost}`;
-    MachineUpgradeBtn.innerHTML = "機械化" + "<br>" + `(${MachineUpgradeCount})`;
+    MachineUpgCostDisplay.textContent = `コスト:${MachineUpgradeCost.toLocaleString()}`;
+    MachineUpgradeBtn.innerHTML = "機械化" + "<br>" + `(${MachineUpgradeCount.toLocaleString()})`;
     //工業化
-    NowDisplay.textContent = `資産:${count}`;
-    FactoryUpgCostDisplay.textContent = `コスト:${FactoryUpgradeCost}`;
-    FactoryUpgradeBtn.innerHTML = "工業化" + "<br>" + `(${FactoryUpgradeCount})`;
+    FactoryUpgCostDisplay.textContent = `コスト:${FactoryUpgradeCost.toLocaleString()}`;
+    FactoryUpgradeBtn.innerHTML = "工業化" + "<br>" + `(${FactoryUpgradeCount.toLocaleString()})`;
     //ジェネレーター
-    NowDisplay.textContent = `資産:${count}`;
-    GeneratorUpgCostDisplay.textContent = `コスト:${GeneratorUpgradeCost}`;
-    GeneratorUpgradeBtn.innerHTML = "ジェネレーター" + "<br>" + `(${GeneratorUpgradeCount})`;
+    GeneratorUpgCostDisplay.textContent = `コスト:${GeneratorUpgradeCost.toLocaleString()}`;
+    GeneratorUpgradeBtn.innerHTML = "ジェネレーター" + "<br>" + `(${GeneratorUpgradeCount.toLocaleString()})`;
     //神の祝福
-    NowDisplay.textContent = `資産:${count}`;
-    GodUpgCostDisplay.textContent = `コスト:${GodUpgradeCost}`;
-    GodUpgradeBtn.innerHTML = "神の祝福" + "<br>" + `(${GodUpgradeCount})`;
+    GodUpgCostDisplay.textContent = `コスト:${GodUpgradeCost.toLocaleString()}`;
+    GodUpgradeBtn.innerHTML = "神の祝福" + "<br>" + `(${GodUpgradeCount.toLocaleString()})`;
+    //資産の表示
+    NowDisplay.textContent = `資産:${count.toLocaleString()}`;
 }
 function Activate() {//アップグレードを表示させる関数
     if (count > 35) {
@@ -184,7 +184,7 @@ function Activate() {//アップグレードを表示させる関数
     }
 }
 function Automaticloop() {//自動処理
-    if (!isGameActive) {//クリア表示を行っているかの判断
+    if (!isGameActive) {//アクティブかの判断
         return;
     }
     if (count >= Clearpoint) {//クリア条件を満たしたかの判断
@@ -197,16 +197,46 @@ function Automaticloop() {//自動処理
     let temp = 0;
     temp = Math.floor(MachineUpgradeCount * 2 + FactoryUpgradeCount * 5 + GeneratorUpgradeCount * 10 * godpower);
     count = count + temp;//自動化によって増えた量を資産に加算
-    NowDisplay.textContent = `資産:${count}`;
-    document.getElementById("AUTO").textContent = `AUTO:${Math.floor(temp * 2)}/s`;//0.5秒ごとに実行されるので2倍
-    document.getElementById("perclick").textContent = `PerClick:${Math.floor(zouka + 1)}`;
+    NowDisplay.textContent = `資産:${count.toLocaleString()}`;
+    document.getElementById("AUTO").textContent = `AUTO:${Math.floor(temp * 2).toLocaleString()}/s`;//0.5秒ごとに実行されるので2倍
+    document.getElementById("perclick").textContent = `PerClick:${Math.floor(zouka + 1).toLocaleString()}`;
     //プログレスバー用の計算処理
     progtemp = count / Clearpoint;
     progtemp = progtemp * 100;
     updateprogress(progtemp);//バーの更新
 }
 function setsumei_close() {//説明を閉じる
+    let FixedClearpoint;
+    Clearpoint = DifficultySelect.value;
     document.getElementById("game-setsumei-popup").style.display = "none";
+    isGameActive = true;
+    switch (Clearpoint) {
+        case "10000":
+            FixedClearpoint = "10,000";
+            break;
+        case "20000":
+            FixedClearpoint = "20,000";
+            break;
+        case "50000":
+            FixedClearpoint = "50,000";
+            break;
+        case "100000":
+            FixedClearpoint = "100,000";
+            break;
+        case "500000":
+            FixedClearpoint = "500,000";
+            break;
+        case "1000000":
+            FixedClearpoint = "1,000,000";
+            break;
+        case "5000000":
+            FixedClearpoint = "5,000,000";
+            break;
+        case "10000000":
+            FixedClearpoint = "10,000,000";
+            break;
+    }
+    progbarText.textContent = `ゲージ満タン(資産が${FixedClearpoint})でゲームクリア！！`;
 }
 
 function debug(a, n) {//コンソールで叩けるやつ
@@ -256,6 +286,7 @@ function reset() {//ゲームのリセットを行うやつ
     GodUpgradeBtn.innerHTML = "神の手" + "<br>" + `(${GodUpgradeCount})`;
     GameClearDisplay.style.display = "none"
     updateprogress(0);
+    document.getElementById("game-setsumei-popup").style.display = "flex";
     console.log("Game has been reset.");
 }
 setInterval(Automaticloop, 500);//毎秒2回処理
