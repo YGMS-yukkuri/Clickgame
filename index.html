@@ -69,7 +69,15 @@
             <div class="popup-content">
                 <h1>ゲームクリア！</h1>
                 <p>もう一度プレイする場合は下のボタンをクリックしてください</p>
-                <button onclick="debug(`reset`)">もう一度遊ぶ！</button>
+                <button onclick="reset()">もう一度遊ぶ！</button>
+            </div>
+        </div>
+        <div id="game-setsumei-popup">
+            <div class="popup-content">
+                <h1 class="setsumei_h1">ゲーム説明</h1>
+                <p>クリックして資産を増やし、アップグレードをしながらゲームクリアを目指してください！</p>
+                <p>資産が100,000に達するとゲームクリアです。</p>
+                <button onclick="setsumei_close()">ゲーム開始！</button>
             </div>
         </div>
     </footer>

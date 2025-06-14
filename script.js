@@ -198,7 +198,9 @@ function Automaticloop() {//自動処理
     progtemp = progtemp * 100;
     updateprogress(progtemp);//バーの更新
 }
-
+function setsumei_close() {//説明を閉じる
+    document.getElementById("game-setsumei-popup").style.display = "none";
+}
 
 function debug(a, n) {//コンソールで叩けるやつ
     switch (a) {
