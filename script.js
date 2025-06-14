@@ -23,7 +23,7 @@ let GeneratorUpgradeCost = 500;
 let GodUpgradeCost = 2500;
 let godpower = 1;
 let isGodDisplay = false;
-let isActive = true;
+let isGameActive = true;
 
 function randommath() {
     return Math.floor(Math.random() * 3) + 8; // 8, 9, 10のいずれかをランダムに返す
@@ -177,12 +177,12 @@ function Activate() {//アップグレードを表示させる関数
     }
 }
 function Automaticloop() {//自動処理
-    if (!isActive) {//クリア表示を行っているかの判断
+    if (!isGameActive) {//クリア表示を行っているかの判断
         return;
     }
     if (count >= Clearpoint) {//クリア条件を満たしたかの判断
         document.getElementById("game-clear-popup").style.display = "flex";
-        isActive = false;
+        isGameActive = false;
     }
     if (!isGodDisplay) {//神の祝福が表示されているかどうか
         Activate();
@@ -229,7 +229,7 @@ function reset() {//ゲームのリセットを行うやつ
     GodUpgradeCost = 2500;
     godpower = 1;
     isGodDisplay = false;
-    isActive = true;
+    isGameActive = true;
     MachineUpgMenu.style.display = "none";
     FactoryUpgMenu.style.display = "none";
     GeneratorUpgMenu.style.display = "none";
