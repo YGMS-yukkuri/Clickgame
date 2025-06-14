@@ -21,9 +21,9 @@ let MachineUpgradeCost = 50;
 let FactoryUpgradeCost = 100;
 let GeneratorUpgradeCost = 500;
 let GodUpgradeCost = 2500;
-let GodActive = 0;
 let godpower = 1;
-let Active = 1;
+let isGodActive = false;
+let isActive = true;
 function randommath(){
     return Math.floor(Math.random() * 3) + 8; // 8, 9, 10のいずれかをランダムに返す
 }
@@ -31,7 +31,6 @@ function randommath(){
 
 mainbutton.addEventListener('click', function () {
     mainClick();
-    console.log(randommath())
 });
 ClickUpgradeBtn.addEventListener('click', function () {
     if (clickUpgCost > count) {
@@ -140,18 +139,18 @@ function Activate(){
     }
     if(count > 2000){
         GodUpgMenu.style.display = "flex";
-        GodActive = 1;
+        isGodActive = true;
     }
 }
 function Automaticloop() {
-    if (Active === 0) {
+    if (!isActive) {
         return;
     }
     if (count >= Clearpoint) {
         document.getElementById("game-clear-popup").style.display = "flex";
-        Active = 0;
+        isActive = false;
     }
-    if (GodActive === 0){
+    if (!isGodActive) {
         Activate();    
     }
     let temp = 0;
@@ -193,8 +192,9 @@ function reset() {
     FactoryUpgradeCost = 100;
     GeneratorUpgradeCost = 500;
     GodUpgradeCost = 2500;
-    GodActive = 0;
     godpower = 1;
+    isGodActive = false;
+    isActive = true;
     MachineUpgMenu.style.display = "none";
     FactoryUpgMenu.style.display = "none";
     GeneratorUpgMenu.style.display = "none";
