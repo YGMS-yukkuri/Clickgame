@@ -22,24 +22,23 @@ let FactoryUpgradeCost = 100;
 let GeneratorUpgradeCost = 500;
 let GodUpgradeCost = 2500;
 let godpower = 1;
-let isGodActive = false;
+let isGodDisplay = false;
 let isActive = true;
+
 function randommath() {
     return Math.floor(Math.random() * 3) + 8; // 8, 9, 10のいずれかをランダムに返す
 }
-
-
-mainbutton.addEventListener('click', function () {
+mainbutton.addEventListener('click', function () {//メインボタンのクリックイベント
     mainClick();
 });
-ClickUpgradeBtn.addEventListener('click', function () {
+ClickUpgradeBtn.addEventListener('click', function () {//クリックアップグレード
     if (clickUpgCost > count) {
         return;
     }
     count = count - clickUpgCost;
     clickUpg++;
     zouka++;
-    if (zouka % 5 === 0) {
+    if (zouka % 5 === 0) {//5の倍数かを判別
         clickUpgCost = Math.floor(clickUpgCost * (randommath() / 10));
     }
     else {
@@ -47,13 +46,13 @@ ClickUpgradeBtn.addEventListener('click', function () {
     }
     updateUpgradeInfo()
 });
-MachineUpgradeBtn.addEventListener('click', function () {
+MachineUpgradeBtn.addEventListener('click', function () {//機械化
     if (MachineUpgradeCost > count) {
         return;
     }
     count = count - MachineUpgradeCost;
     MachineUpgradeCount++;
-    if (MachineUpgradeCount % 5 === 0) {
+    if (MachineUpgradeCount % 5 === 0) {//5の倍数かを判別
         MachineUpgradeCost = Math.floor(MachineUpgradeCost * (randommath() / 10));
     }
     else {
@@ -61,13 +60,13 @@ MachineUpgradeBtn.addEventListener('click', function () {
     }
     updateUpgradeInfo()
 });
-FactoryUpgradeBtn.addEventListener('click', function () {
+FactoryUpgradeBtn.addEventListener('click', function () {//工業化
     if (FactoryUpgradeCost > count) {
         return;
     }
     count = count - FactoryUpgradeCost;
     FactoryUpgradeCount++;
-    if (FactoryUpgradeCount % 5 === 0) {
+    if (FactoryUpgradeCount % 5 === 0) {//5の倍数かを判別
         FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * (randommath() / 10));
     }
     else {
@@ -75,13 +74,13 @@ FactoryUpgradeBtn.addEventListener('click', function () {
     }
     updateUpgradeInfo()
 });
-GeneratorUpgradeBtn.addEventListener('click', function () {
+GeneratorUpgradeBtn.addEventListener('click', function () {//ジェネレーター
     if (GeneratorUpgradeCost > count) {
         return;
     }
     count = count - GeneratorUpgradeCost;
     GeneratorUpgradeCount++;
-    if (GeneratorUpgradeCount % 5 === 0) {
+    if (GeneratorUpgradeCount % 5 === 0) {//5の倍数かを判別
         GeneratorUpgradeCost = Math.floor(GeneratorUpgradeCost * (randommath() / 10));
     }
     else {
@@ -89,14 +88,15 @@ GeneratorUpgradeBtn.addEventListener('click', function () {
     }
     updateUpgradeInfo()
 });
-GodUpgradeBtn.addEventListener('click', function () {
+GodUpgradeBtn.addEventListener('click', function () {//神の祝福
     if (GodUpgradeCost > count) {
         return;
     }
     count = count - GodUpgradeCost;
     GodUpgradeCount++;
     godpower = godpower * 2;
-    if (godpower > 4) {
+    if (godpower > 4) { //神の力が4を超えた場合
+        //神の力が4を超えた場合、資産の増加量を調整
         let temp = zouka * godpower * 3 / 2;
         if (temp > 100000) {
             zouka = zouka + 10000;
@@ -120,7 +120,8 @@ GodUpgradeBtn.addEventListener('click', function () {
     else {
         zouka = zouka * godpower * 3 / 2;
     }
-    if (GodUpgradeCount % 5 === 0) {
+    if (GodUpgradeCount % 5 === 0) {//5の倍数かを判別
+        //コストがランダムで減少する
         GodUpgradeCost = Math.floor(GodUpgradeCost * (randommath() / 10));
     }
     else {
@@ -160,7 +161,7 @@ function updateUpgradeInfo() {//アップグレード情報の更新
     document.getElementById("auto4UpgradeCost").textContent = `コスト:${GodUpgradeCost}`;
     GodUpgradeBtn.innerHTML = "神の祝福" + "<br>" + `(${GodUpgradeCount})`;
 }
-function Activate() {
+function Activate() {//アップグレードを表示させる関数
     if (count > 35) {
         MachineUpgMenu.style.display = "flex";
     }
@@ -172,33 +173,34 @@ function Activate() {
     }
     if (count > 2000) {
         GodUpgMenu.style.display = "flex";
-        isGodActive = true;
+        isGodDisplay = true;
     }
 }
-function Automaticloop() {
-    if (!isActive) {
+function Automaticloop() {//自動処理
+    if (!isActive) {//クリア表示を行っているかの判断
         return;
     }
-    if (count >= Clearpoint) {
+    if (count >= Clearpoint) {//クリア条件を満たしたかの判断
         document.getElementById("game-clear-popup").style.display = "flex";
         isActive = false;
     }
-    if (!isGodActive) {
+    if (!isGodDisplay) {//神の祝福が表示されているかどうか
         Activate();
     }
     let temp = 0;
     temp = Math.floor(MachineUpgradeCount * 2 + FactoryUpgradeCount * 5 + GeneratorUpgradeCount * 10 * godpower);
-    count = count + temp;
+    count = count + temp;//自動化によって増えた量を資産に加算
     document.getElementById("NOW").textContent = `資産:${count}`;
     document.getElementById("AUTO").textContent = `AUTO:${Math.floor(temp * 2)}/s`;//0.5秒ごとに実行されるので2倍
     document.getElementById("perclick").textContent = `PerClick:${Math.floor(zouka + 1)}`;
+    //プログレスバー用の計算処理
     progtemp = count / Clearpoint;
     progtemp = progtemp * 100;
-    updateprogress(progtemp);
+    updateprogress(progtemp);//バーの更新
 }
 
 
-function debug(a, n) {
+function debug(a, n) {//コンソールで叩けるやつ
     switch (a) {
         case "now":
             count = n;
@@ -212,7 +214,7 @@ function debug(a, n) {
             break;
     }
 }
-function reset() {
+function reset() {//ゲームのリセットを行うやつ
     zouka = 0;
     count = 0;
     clickUpg = 0;
@@ -226,7 +228,7 @@ function reset() {
     GeneratorUpgradeCost = 500;
     GodUpgradeCost = 2500;
     godpower = 1;
-    isGodActive = false;
+    isGodDisplay = false;
     isActive = true;
     MachineUpgMenu.style.display = "none";
     FactoryUpgMenu.style.display = "none";
@@ -247,5 +249,4 @@ function reset() {
     updateprogress(0);
     console.log("Game has been reset.");
 }
-
-setInterval(Automaticloop, 500);
+setInterval(Automaticloop, 500);//毎秒2回処理
