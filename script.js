@@ -241,6 +241,10 @@ function setsumei_close() {//説明を閉じる
     progbarText.textContent = `ゲージ満タン(資産が${FixedClearpoint})でゲームクリア！！`;
 }
 
+document.addEventListener(`contextmenu`, function (e) {
+    e.preventDefault();
+})
+
 function debug(a, n) {//コンソールで叩けるやつ
     switch (a) {
         case "now":
