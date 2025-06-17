@@ -197,7 +197,7 @@ function Automaticloop() {//自動処理
     }
     PlayTime++
     let temp = 0;
-    temp = Math.floor(MachineUpgradeCount * 2 + FactoryUpgradeCount * 5 + GeneratorUpgradeCount * 10 * godpower);
+    temp = Math.floor((MachineUpgradeCount * 2 + FactoryUpgradeCount * 5 + GeneratorUpgradeCount * 10) * godpower);
     count = count + temp;//自動化によって増えた量を資産に加算
     NowDisplay.textContent = `資産:${count.toLocaleString()}`;
     document.getElementById("AUTO").textContent = `AUTO:${Math.floor(temp * 2).toLocaleString()}/s`;//0.5秒ごとに実行されるので2倍
