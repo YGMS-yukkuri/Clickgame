@@ -1,3 +1,4 @@
+const GameVersion = "1.0.0";
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -296,4 +297,5 @@ function reset() {//ゲームのリセットを行うやつ
     document.getElementById("game-setsumei-popup").style.display = "flex";
     console.log("Game has been reset.");
 }
+document.getElementById("versiontext").textContent = `Version:${GameVersion}`;
 setInterval(Automaticloop, 500);//毎秒2回処理
