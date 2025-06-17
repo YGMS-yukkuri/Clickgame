@@ -18,7 +18,7 @@ const GeneratorUpgCostDisplay = document.getElementById("auto3UpgradeCost");
 const GodUpgCostDisplay = document.getElementById("auto4UpgradeCost");
 const GameClearDisplay = document.getElementById("game-clear-popup");
 const DifficultySelect = document.getElementById("difficulty");
-
+let PlayTime = 0;
 let Clearpoint;
 let zouka = 0;
 let count = 0;
@@ -189,11 +189,13 @@ function Automaticloop() {//自動処理
     }
     if (count >= Clearpoint) {//クリア条件を満たしたかの判断
         GameClearDisplay.style.display = "flex";
+        document.getElementById("PlayTimetext").textContent = `プレイ時間:${(PlayTime / 2)}秒`
         isGameActive = false;
     }
     if (!isGodDisplay) {//神の祝福が表示されているかどうか
         Activate();
     }
+    PlayTime++
     let temp = 0;
     temp = Math.floor(MachineUpgradeCount * 2 + FactoryUpgradeCount * 5 + GeneratorUpgradeCount * 10 * godpower);
     count = count + temp;//自動化によって増えた量を資産に加算
@@ -254,6 +256,7 @@ function debug(a, n) {//コンソールで叩けるやつ
     }
 }
 function reset() {//ゲームのリセットを行うやつ
+    PlayTime = 0;
     zouka = 0;
     count = 0;
     clickUpg = 0;

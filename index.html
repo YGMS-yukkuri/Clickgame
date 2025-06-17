@@ -68,6 +68,7 @@
         <div id="game-clear-popup" style="display:none">
             <div class="popup-content">
                 <h1>ゲームクリア！</h1>
+                <p id="PlayTimetext"></p>
                 <p>もう一度プレイする場合は下のボタンをクリックしてください</p>
                 <button onclick="reset()">もう一度遊ぶ！</button>
             </div>
@@ -79,14 +80,14 @@
                 <p>クリアボーダーを設定してください。</p>
                 <p>デフォルトは100,000です。</p>
                 <select id="difficulty">
-                    <option value="10000">10,000(お試しプレイ)</option>
+                    <option value="10000">10,000</option>
                     <option value="20000">20,000</option>
                     <option value="50000">50,000</option>
-                    <option value="100000" selected>100,000(目安:5分程度)</option>
+                    <option value="100000" selected>100,000</option>
                     <option value="500000">500,000</option>
                     <option value="1000000">1,000,000</option>
                     <option value="5000000">5,000,000</option>
-                    <option value="10000000">10,000,000(暇つぶし用)</option>
+                    <option value="10000000">10,000,000</option>
                 </select>
                 <button onclick="setsumei_close()">ゲーム開始！</button>
             </div>
