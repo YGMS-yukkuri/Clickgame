@@ -1,4 +1,4 @@
-const GameVersion = "1.0.0";
+const GameVersion = "1.0.1";
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -238,6 +238,12 @@ function setsumei_close() {//説明を閉じる
         case "10000000":
             FixedClearpoint = "10,000,000";
             break;
+        case "20000000":
+            FixedClearpoint = "20,000,000";
+        case "50000000":
+            FixedClearpoint = "50,000,000";
+        case "100000000":
+            FixedClearpoint = "100,000,000";
     }
     progbarText.textContent = `ゲージ満タン(資産が${FixedClearpoint})でゲームクリア！！`;
 }
