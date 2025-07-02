@@ -1,4 +1,4 @@
-const GameVersion = "1.1.2"; //ゲームのバージョン
+const GameVersion = "1.1.3"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -36,12 +36,14 @@ let GodUpgradeCost = 2500;
 let godpower = 1;
 let isGodDisplay = false;
 let isGameActive = false;
+let mainbuttonClickCount = 0;
 
 function randommath() {
     return Math.floor(Math.random() * 3) + 8; // 8, 9, 10のいずれかをランダムに返す
 }
 mainbutton.addEventListener('click', function () {//メインボタンのクリックイベント
     mainClick();
+    mainbuttonClickCount++;
 });
 ClickUpgradeBtn.addEventListener('click', function () {//クリックアップグレード
     if (clickUpgCost > count) {
@@ -191,18 +193,19 @@ function Activate() {//アップグレードを表示させる関数
     }
 }
 function Automaticloop() {//自動処理
+    console.log(mainbuttonClickCount)
     if (!isGameActive) {//アクティブかの判断
         return;
     }
     if (count >= Clearpoint) {//クリア条件を満たしたかの判断
         GameClearDisplay.style.display = "flex";
-        document.getElementById("PlayTimetext").textContent = `プレイ時間:${(PlayTime / 2)}秒`
+        document.getElementById("PlayTimetext").textContent = `プレイ時間:${PlayTime}秒`;
+        document.getElementById("AvgClick").textContent = `平均クリック数:${Math.floor(mainbuttonClickCount / PlayTime)}回/s`;
         isGameActive = false;
     }
     if (!isGodDisplay) {//神の祝福が表示されているかどうか
         Activate();
     }
-    PlayTime++
     let temp = 0;
     temp = Math.floor((MachineUpgradeCount * 2 + FactoryUpgradeCount * 5 + GeneratorUpgradeCount * 10) * godpower);
     count = count + temp;//自動化によって増えた量を資産に加算
@@ -341,6 +344,13 @@ function reset() {//ゲームのリセットを行うやつ
     document.getElementById("game-setsumei-popup").style.display = "flex";
     console.log("Game has been reset.");
 }
+function timecount(){
+    if (!isGameActive) {//アクティブかの判断
+        return;
+    }
+    PlayTime++
+}
 document.getElementById("versiontext").textContent = `Version:${GameVersion}`;
 setInterval(Automaticloop, 500);//毎秒2回処理
 setInterval(button_activate,100);//毎秒10回
+setInterval(timecount,1000);//毎秒1回
