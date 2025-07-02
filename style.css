@@ -86,7 +86,7 @@ main{
     display: flex;
     flex-direction: column;
 }
-.buttons button{
+.upgrades{
     width: 110px;
     height: 110px;
     border-radius: 100%;
@@ -95,10 +95,15 @@ main{
     color: rgb(42, 11, 78);
     transition: all 0.2s ease;
 }
-.buttons button:hover{
+.upgrades:hover{
     background-color: rgb(131, 109, 56);
     color: aliceblue;
     transition: all 0.2s ease;
+}
+.upgrades:disabled{
+    background: rgba(170, 170, 170, 0.641);
+    color: rgb(0, 0, 0);
+    cursor: not-allowed;
 }
 .clear{
     width: 80%;

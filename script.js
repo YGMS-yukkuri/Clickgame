@@ -1,4 +1,4 @@
-const GameVersion = "1.0.1";
+const GameVersion = "1.1.0";
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -208,6 +208,38 @@ function Automaticloop() {//自動処理
     progtemp = progtemp * 100;
     updateprogress(progtemp);//バーの更新
 }
+function button_activate(){//ボタンのグレーアウト処理
+    if (count >= clickUpgCost){
+        ClickUpgradeBtn.disabled = false;
+    }
+    else{
+        ClickUpgradeBtn.disabled = true;
+    };
+    if (count >= MachineUpgradeCost){
+        MachineUpgradeBtn.disabled = false;
+    }
+    else{
+        MachineUpgradeBtn.disabled = true;
+    };
+    if (count >= FactoryUpgradeCost){
+        FactoryUpgradeBtn.disabled = false;
+    }
+    else{
+        FactoryUpgradeBtn.disabled = true;
+    };
+    if (count >= GeneratorUpgradeCost){
+        GeneratorUpgradeBtn.disabled = false;
+    }
+    else{
+        GeneratorUpgradeBtn.disabled = true;
+    };
+    if (count >= GodUpgradeCost){
+        GodUpgradeBtn.disabled = false;
+    }
+    else{
+        GodUpgradeBtn.disabled = true;
+    };
+}
 function setsumei_close() {//説明を閉じる
     let FixedClearpoint;
     Clearpoint = DifficultySelect.value;
@@ -305,3 +337,4 @@ function reset() {//ゲームのリセットを行うやつ
 }
 document.getElementById("versiontext").textContent = `Version:${GameVersion}`;
 setInterval(Automaticloop, 500);//毎秒2回処理
+setInterval(button_activate,100);//毎秒10回
