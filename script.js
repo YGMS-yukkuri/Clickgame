@@ -117,22 +117,22 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
             zouka = Math.floor(temp * godpower * 0.0005);
         }
         else if (temp > 100000) {
-            zouka = Math.floor(temp * godpower * 0.005);
+            zouka = Math.floor(temp * godpower * 0.001);
         }
         else if (temp > 50000) {
-            zouka = Math.floor(temp * godpower * 0.05);
+            zouka = Math.floor(temp * godpower * 0.04);
         }
         else if (temp > 20000) {
-            zouka = Math.floor(temp * godpower * 0.1);
+            zouka = Math.floor(temp * godpower * 0.08);
         }
         else if (temp > 10000) {
-            zouka = Math.floor(temp * godpower * 0.2);
+            zouka = Math.floor(temp * godpower * 0.15);
         }
         else if (temp > 5000) {
             zouka = Math.floor(temp * godpower * 0.4);
         }
         else {
-            zouka = Math.floor(temp * godpower * 0.5);
+            zouka = Math.floor(temp * godpower * 0.7);
         }
     }
     else {
