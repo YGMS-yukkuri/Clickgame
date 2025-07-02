@@ -109,24 +109,30 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
     godpower = godpower * 2;
     if (godpower > 4) { //神の力が4を超えた場合
         //神の力が4を超えた場合、資産の増加量を調整
-        let temp = zouka * godpower * 3 / 2;
-        if (temp > 100000) {
-            zouka = zouka + 10000;
+        let temp = zouka * godpower * 0.5;
+        if (temp > 1000000){
+            zouka = zouka + godpower * 1000;
+        }
+        else if (temp > 500000){
+            zouka = Math.floor(temp * godpower * 0.0005);
+        }
+        else if (temp > 100000) {
+            zouka = Math.floor(temp * godpower * 0.005);
         }
         else if (temp > 50000) {
-            zouka = Math.floor(zouka * godpower * 0.2);
+            zouka = Math.floor(temp * godpower * 0.05);
         }
         else if (temp > 20000) {
-            zouka = Math.floor(zouka * godpower * 0.3);
+            zouka = Math.floor(temp * godpower * 0.1);
         }
         else if (temp > 10000) {
-            zouka = Math.floor(zouka * godpower * 0.4);
+            zouka = Math.floor(temp * godpower * 0.2);
         }
         else if (temp > 5000) {
-            zouka = Math.floor(zouka * godpower * 0.6);
+            zouka = Math.floor(temp * godpower * 0.4);
         }
         else {
-            zouka = Math.floor(zouka * godpower * 0.8);
+            zouka = Math.floor(temp * godpower * 0.5);
         }
     }
     else {
