@@ -1,4 +1,4 @@
-const GameVersion = "1.1.0";
+const GameVersion = "1.1.1";
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
