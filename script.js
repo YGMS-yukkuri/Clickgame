@@ -1,4 +1,4 @@
-const GameVersion = "1.1.6"; //ゲームのバージョン
+const GameVersion = "1.1.7"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -106,10 +106,11 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
     if (GodUpgradeCost > count) {
         return;
     }
+    mainbutton.style.backgroundColor = "#ffe863"; //クリックボタンの色を変更
     count = count - GodUpgradeCost;
     GodUpgradeCount++;
     godpower = godpower * 2;
-    if (godpower > 4) { //神の力が4を超えた場合
+    if (godpower >= 4) { //神の力が4を超えた場合
         //神の力が4を超えた場合、資産の増加量を調整
         let temp = zouka * godpower * 0.5;
         if (temp > 1000000){
