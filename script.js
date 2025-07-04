@@ -134,7 +134,7 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
             zouka = Math.floor(temp * godpower * 0.4);
         }
         else {
-            zouka = Math.floor(temp * godpower * 0.7);
+            zouka = Math.floor(temp * godpower * 0.5);
         }
     }
     else {
