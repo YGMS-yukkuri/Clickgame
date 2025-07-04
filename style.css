@@ -182,11 +182,20 @@ main{
     width: 50%;
     text-align: center;
     font-size: large;
+    border-radius: 10px;
+}
+#game-setsumei-popup button{
+    justify-content: center;
+    background-color: cornsilk;
+    border: 1px solid;
+    width: 50%;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
 }
 #game-setsumei-popup button:hover{
     background-color: rgb(250, 144, 144);
     border: 1px double;
-    width: 100%;
+    width: 80%;
     transition: all 0.3s ease-in-out;
 }
 #version{
