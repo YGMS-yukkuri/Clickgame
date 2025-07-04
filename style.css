@@ -73,11 +73,11 @@ main{
     padding: 2%;
 }
 .txt2{
-    width: 15%;
+    width: 25%;
     border-left: thick double black;   
 }
 .txt1{
-    width: 60%;
+    width: 50%;
     border-left: 1px solid;
     text-align: left;
 }
