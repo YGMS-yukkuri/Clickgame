@@ -1,4 +1,4 @@
-const GameVersion = "1.1.7"; //ゲームのバージョン
+const GameVersion = "1.2.0β"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -201,7 +201,7 @@ function Automaticloop() {//自動処理
     if (count >= Clearpoint) {//クリア条件を満たしたかの判断
         GameClearDisplay.style.display = "flex";
         document.getElementById("PlayTimetext").textContent = `プレイ時間:${PlayTime}秒`;
-        document.getElementById("AvgClick").textContent = `平均クリック数:${Math.floor(mainbuttonClickCount / PlayTime)}回/s`;
+        document.getElementById("AvgClick").textContent = `平均クリック数:${parseFloat(mainbuttonClickCount / PlayTime).toFixed(2)}回/s`;
         isGameActive = false;
     }
     if (!isGodDisplay) {//神の祝福が表示されているかどうか
