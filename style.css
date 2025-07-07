@@ -156,11 +156,16 @@ header{
     border: 5px ridge rgb(110, 219, 255);
     box-shadow: 5px;
 }
+.popup-content input{
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+}
 .popup-content button{
     justify-content: center;
     background-color: gainsboro;
     border: 1px solid;
-    width: 50%;
+    width: 60%;
     transition: all 0.5s ease-in-out;
 }
 .popup-content button:hover{

@@ -74,7 +74,15 @@
                 <p id="PlayTimetext"></p>
                 <p id="AvgClick"></p>
                 <p>もう一度プレイする場合は下のボタンをクリックしてください</p>
-                <button onclick="reset()">もう一度遊ぶ！</button>
+                <div class="clear-buttons">
+                    <div class="senddata">
+                        <input type="text" id="name" placeholder="記録を送信するときは名前を入力してください">
+                        <button id="senddata" onclick="MakeJSON()">クリアデータを送信</button>
+                    </div>
+                    <div>
+                        <button onclick="reset()">もう一度遊ぶ！</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="game-setsumei-popup">

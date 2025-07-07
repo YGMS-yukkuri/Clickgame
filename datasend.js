@@ -1,4 +1,4 @@
-const SendingDataURL = "https://script.google.com/macros/s/AKfycbw8QoBUsymWX7e4oLU3MV3rCfgK720yk4Ps7Dx4XhEgAn67dyLG9TJvOqQT0EmM8mjQgA/exec";
+const SendingDataURL = "https://script.google.com/macros/s/AKfycbwBsumewUCX5u0Z2O-SUkaYG2ix2V0mC-b6LuTh4wme/dev";
 function MakeJSON(){
     const nowJST = new Date().toLocaleString("ja-JP", {
     timeZone: "Asia/Tokyo"
