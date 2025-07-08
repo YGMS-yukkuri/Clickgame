@@ -306,7 +306,7 @@ function reset() {//ゲームのリセットを行うやつ
     GodUpgradeCost = 2500;
     godpower = 1;
     isGodDisplay = false;
-    isGameActive = true;
+    isGameActive = false;
     MachineUpgMenu.style.display = "none";
     FactoryUpgMenu.style.display = "none";
     GeneratorUpgMenu.style.display = "none";
@@ -323,6 +323,7 @@ function reset() {//ゲームのリセットを行うやつ
     GeneratorUpgradeBtn.innerHTML = "ジェネレーター" + "<br>" + `(${GeneratorUpgradeCount})`;
     GodUpgradeBtn.innerHTML = "神の手" + "<br>" + `(${GodUpgradeCount})`;
     GameClearDisplay.style.display = "none"
+    mainbuttonClickCount = 0;
     updateprogress(0);
     document.getElementById("game-setsumei-popup").style.display = "flex";
     document.getElementById("name").disabled = false;
