@@ -1,4 +1,4 @@
-const GameVersion = "1.2.0"; //ゲームのバージョン
+const GameVersion = "1.2.2"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -194,7 +194,6 @@ function Activate() {//アップグレードを表示させる関数
     }
 }
 function Automaticloop() {//自動処理
-    console.log(mainbuttonClickCount)
     if (!isGameActive) {//アクティブかの判断
         return;
     }
@@ -219,36 +218,16 @@ function Automaticloop() {//自動処理
     updateprogress(progtemp);//バーの更新
 }
 function button_activate() {//ボタンのグレーアウト処理
-    if (count >= clickUpgCost) {
-        ClickUpgradeBtn.disabled = false;
-    }
-    else {
-        ClickUpgradeBtn.disabled = true;
-    };
-    if (count >= MachineUpgradeCost) {
-        MachineUpgradeBtn.disabled = false;
-    }
-    else {
-        MachineUpgradeBtn.disabled = true;
-    };
-    if (count >= FactoryUpgradeCost) {
-        FactoryUpgradeBtn.disabled = false;
-    }
-    else {
-        FactoryUpgradeBtn.disabled = true;
-    };
-    if (count >= GeneratorUpgradeCost) {
-        GeneratorUpgradeBtn.disabled = false;
-    }
-    else {
-        GeneratorUpgradeBtn.disabled = true;
-    };
-    if (count >= GodUpgradeCost) {
-        GodUpgradeBtn.disabled = false;
-    }
-    else {
-        GodUpgradeBtn.disabled = true;
-    };
+    const upgrades = [
+        { cost: clickUpgCost, btn: ClickUpgradeBtn },
+        { cost: MachineUpgradeCost, btn: MachineUpgradeBtn },
+        { cost: FactoryUpgradeCost, btn: FactoryUpgradeBtn },
+        { cost: GeneratorUpgradeCost, btn: GeneratorUpgradeBtn },
+        { cost: GodUpgradeCost, btn: GodUpgradeBtn },
+    ];
+    upgrades.forEach(upg => {
+        upg.btn.disabled = count < upg.cost;
+    });
 }
 function setsumei_close() {//説明を閉じる
     let FixedClearpoint;
@@ -349,6 +328,7 @@ function reset() {//ゲームのリセットを行うやつ
     document.getElementById("name").disabled = false;
     document.getElementById("senddata").disabled = false;
     document.getElementById("senddata").innerText = "クリアデータを送信";
+    mainbutton.style.backgroundColor = "#64e8e8f3"; //クリックボタンの色を元に戻す
     console.log("Game has been reset.");
 }
 function timecount() {

@@ -3,12 +3,17 @@ function MakeJSON(){
     const nowJST = new Date().toLocaleString("ja-JP", {
     timeZone: "Asia/Tokyo"
     });
+    if (!document.getElementById("name").value) {
+        alert("名前を入力してください。");
+        return;
+    }
     const data = {
         "name" : document.getElementById("name").value,
         "gamemode" : Clearpoint,
         "time" : PlayTime,
         "avg" : parseFloat(mainbuttonClickCount / PlayTime).toFixed(2),
-        "day" : nowJST
+        "day" : nowJST,
+        "version" : GameVersion
     }
     console.log(data);
     sendDataToGoogleSheets(data);

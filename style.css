@@ -35,7 +35,7 @@ header{
     font-size: 20px;
 }
 .clickUI button:hover{
-    background-color: rgba(100, 232, 232, 0.952);
+    background-color: #64e8e8f3;
     transform: scale(1.1);
     transition: all 0.2s ease-in-out;
 }
