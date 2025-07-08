@@ -12,6 +12,9 @@ function MakeJSON(){
     }
     console.log(data);
     sendDataToGoogleSheets(data);
+    document.getElementById("senddata").disabled = true;
+    document.getElementById("resetbutton").disabled = true;
+    document.getElementById("senddata").innerText = "データを送信中...";
 }
 function sendDataToGoogleSheets(data){
     fetch(SendingDataURL, {
@@ -25,6 +28,18 @@ function sendDataToGoogleSheets(data){
     .then(res => res.json())
     .then(response => {
         alert(response.message);
+        if (response.compleate === "true"){
+            document.getElementById("name").disabled = true;
+            document.getElementById("senddata").disabled = true;
+            document.getElementById("senddata").innerText = "送信済み";
+            document.getElementById("resetbutton").disabled = false;
+        }
+        else {
+            document.getElementById("senddata").innerText = "クリアデータを送信";
+            document.getElementById("senddata").disabled = false;
+            document.getElementById("name").disabled = false;
+            document.getElementById("resetbutton").disabled = false;
+        }
     })
     .catch(error => {
         alert("データの送信に失敗しました。");

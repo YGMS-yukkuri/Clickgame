@@ -175,6 +175,13 @@ header{
     transition: all 0.3s ease-in-out;
     border-radius: 10px;
 }
+.popup-content button:disabled{
+    width:60%;
+    background-color: rgba(170, 170, 170, 1);
+    color: rgb(0, 0, 0);
+    cursor: not-allowed;
+    border-radius: 0px;
+}
 #game-setsumei-popup{
     display: flex;
     position: fixed;

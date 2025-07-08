@@ -1,4 +1,4 @@
-const GameVersion = "1.2.0β"; //ゲームのバージョン
+const GameVersion = "1.2.0"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -113,10 +113,10 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
     if (godpower >= 4) { //神の力が4を超えた場合
         //神の力が4を超えた場合、資産の増加量を調整
         let temp = zouka * godpower * 0.5;
-        if (temp > 1000000){
+        if (temp > 1000000) {
             zouka = zouka + godpower * 1000;
         }
-        else if (temp > 500000){
+        else if (temp > 500000) {
             zouka = Math.floor(temp * godpower * 0.0005);
         }
         else if (temp > 100000) {
@@ -218,35 +218,35 @@ function Automaticloop() {//自動処理
     progtemp = progtemp * 100;
     updateprogress(progtemp);//バーの更新
 }
-function button_activate(){//ボタンのグレーアウト処理
-    if (count >= clickUpgCost){
+function button_activate() {//ボタンのグレーアウト処理
+    if (count >= clickUpgCost) {
         ClickUpgradeBtn.disabled = false;
     }
-    else{
+    else {
         ClickUpgradeBtn.disabled = true;
     };
-    if (count >= MachineUpgradeCost){
+    if (count >= MachineUpgradeCost) {
         MachineUpgradeBtn.disabled = false;
     }
-    else{
+    else {
         MachineUpgradeBtn.disabled = true;
     };
-    if (count >= FactoryUpgradeCost){
+    if (count >= FactoryUpgradeCost) {
         FactoryUpgradeBtn.disabled = false;
     }
-    else{
+    else {
         FactoryUpgradeBtn.disabled = true;
     };
-    if (count >= GeneratorUpgradeCost){
+    if (count >= GeneratorUpgradeCost) {
         GeneratorUpgradeBtn.disabled = false;
     }
-    else{
+    else {
         GeneratorUpgradeBtn.disabled = true;
     };
-    if (count >= GodUpgradeCost){
+    if (count >= GodUpgradeCost) {
         GodUpgradeBtn.disabled = false;
     }
-    else{
+    else {
         GodUpgradeBtn.disabled = true;
     };
 }
@@ -289,7 +289,7 @@ function setsumei_close() {//説明を閉じる
         case "100000000":
             FixedClearpoint = "100,000,000";
             break;
-        }
+    }
     progbarText.textContent = `ゲージ満タン(資産が${FixedClearpoint})でゲームクリア！！`;
 }
 
@@ -346,9 +346,12 @@ function reset() {//ゲームのリセットを行うやつ
     GameClearDisplay.style.display = "none"
     updateprogress(0);
     document.getElementById("game-setsumei-popup").style.display = "flex";
+    document.getElementById("name").disabled = false;
+    document.getElementById("senddata").disabled = false;
+    document.getElementById("senddata").innerText = "クリアデータを送信";
     console.log("Game has been reset.");
 }
-function timecount(){
+function timecount() {
     if (!isGameActive) {//アクティブかの判断
         return;
     }
@@ -356,5 +359,5 @@ function timecount(){
 }
 document.getElementById("versiontext").textContent = `Version:${GameVersion}`;
 setInterval(Automaticloop, 500);//毎秒2回処理
-setInterval(button_activate,100);//毎秒10回
-setInterval(timecount,1000);//毎秒1回
+setInterval(button_activate, 100);//毎秒10回
+setInterval(timecount, 1000);//毎秒1回

@@ -76,11 +76,11 @@
                 <p>もう一度プレイする場合は下のボタンをクリックしてください</p>
                 <div class="clear-buttons">
                     <div class="senddata">
-                        <input type="text" id="name" placeholder="記録を送信するときは名前を入力してください">
+                        <input id="name" placeholder="記録を送信するときは名前を入力してください">
                         <button id="senddata" onclick="MakeJSON()">クリアデータを送信</button>
                     </div>
                     <div>
-                        <button onclick="reset()">もう一度遊ぶ！</button>
+                        <button id="resetbutton" onclick="reset()">もう一度遊ぶ！</button>
                     </div>
                 </div>
             </div>
