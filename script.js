@@ -1,4 +1,4 @@
-const GameVersion = "1.2.3"; //ゲームのバージョン
+const GameVersion = "1.2.4"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -146,7 +146,7 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
         GodUpgradeCost = Math.floor(GodUpgradeCost * (randommath() / 10));
     }
     else {
-        GodUpgradeCost = Math.floor(GodUpgradeCost * 2);
+        GodUpgradeCost = Math.floor(GodUpgradeCost * (godpower - 1));
     }
     updateUpgradeInfo();
 })
