@@ -1,4 +1,4 @@
-const GameVersion = "1.2.5"; //ゲームのバージョン
+const GameVersion = "1.2.6"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -56,7 +56,7 @@ ClickUpgradeBtn.addEventListener('click', function () {//クリックアップ�
         clickUpgCost = Math.floor(clickUpgCost * (randommath() / 10));
     }
     else {
-        clickUpgCost = Math.floor(clickUpgCost * 1.1);
+        clickUpgCost = Math.floor(clickUpgCost * 1.05);
     }
     updateUpgradeInfo()
 });
@@ -70,7 +70,7 @@ MachineUpgradeBtn.addEventListener('click', function () {//機械化
         MachineUpgradeCost = Math.floor(MachineUpgradeCost * (randommath() / 10));
     }
     else {
-        MachineUpgradeCost = Math.floor(MachineUpgradeCost * 1.2);
+        MachineUpgradeCost = Math.floor(MachineUpgradeCost * 1.15);
     }
     updateUpgradeInfo()
 });
@@ -84,7 +84,7 @@ FactoryUpgradeBtn.addEventListener('click', function () {//工業化
         FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * (randommath() / 10));
     }
     else {
-        FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * 1.25);
+        FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * 1.2);
     }
     updateUpgradeInfo()
 });
@@ -123,19 +123,19 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
             zouka = Math.floor(temp * godpower * 0.001);
         }
         else if (temp > 50000) {
-            zouka = Math.floor(temp * godpower * 0.04);
+            zouka = Math.floor(temp * godpower * 0.01);
         }
         else if (temp > 20000) {
-            zouka = Math.floor(temp * godpower * 0.08);
+            zouka = Math.floor(temp * godpower * 0.05);
         }
         else if (temp > 10000) {
-            zouka = Math.floor(temp * godpower * 0.15);
+            zouka = Math.floor(temp * godpower * 0.1);
         }
         else if (temp > 5000) {
-            zouka = Math.floor(temp * godpower * 0.4);
+            zouka = Math.floor(temp * godpower * 0.2);
         }
         else {
-            zouka = Math.floor(temp * godpower * 0.5);
+            zouka = Math.floor(temp * godpower * 0.3);
         }
     }
     else {
@@ -145,11 +145,8 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
         //コストがランダムで減少する
         GodUpgradeCost = Math.floor(GodUpgradeCost * (randommath() / 10));
     }
-    else if (godpower >= 4) {
-        GodUpgradeCost = Math.floor(GodUpgradeCost * 2);
-    }
     else {
-        GodUpgradeCost = Math.floor(GodUpgradeCost * (godpower * 0.8));
+        GodUpgradeCost = Math.floor(GodUpgradeCost * (godpower));
     }
     updateUpgradeInfo();
 })

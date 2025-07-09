@@ -3,7 +3,9 @@
 保存された記録はこちらから
 [Googleスプレッドシート](https://docs.google.com/spreadsheets/d/1P9rJ0hNjFPZ7cqtDXymo_BhU8f-ms1tRS71UPgFbFgs/edit?usp=sharing)
 
-
+## 2025-07-09
+- v1.2.6
+    - バランス調整
 ## 2025-07-08
 - v1.2.5
     - 神の祝福の弱体化
