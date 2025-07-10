@@ -1,4 +1,4 @@
-const GameVersion = "1.2.6"; //ゲームのバージョン
+const GameVersion = "1.2.7"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -56,7 +56,7 @@ ClickUpgradeBtn.addEventListener('click', function () {//クリックアップ�
         clickUpgCost = Math.floor(clickUpgCost * (randommath() / 10));
     }
     else {
-        clickUpgCost = Math.floor(clickUpgCost * 1.05);
+        clickUpgCost = Math.floor(clickUpgCost * 1.1);
     }
     updateUpgradeInfo()
 });
