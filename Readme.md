@@ -4,7 +4,12 @@
 [Googleスプレッドシート](https://docs.google.com/spreadsheets/d/1P9rJ0hNjFPZ7cqtDXymo_BhU8f-ms1tRS71UPgFbFgs/edit?usp=sharing)
 
 ## 2025-07-11
-- 
+- v1.3.0
+    - ラッキー要素を追加
+        - ラッキーが発動するとすべてのアップグレードのコストが下がります
+        - ラッキーは確率で発動し、発動するとインフォメーション部分に発動回数の累計が表示されます
+        - コストの減少率はランダムです
+    - 各種UIの調整
 ## 2025-07-10
 - v1.2.7
     - バランス調整
