@@ -1,4 +1,4 @@
-const GameVersion = "1.2.7_1"; //ゲームのバージョン
+const GameVersion = "1.3.0"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -37,6 +37,7 @@ let godpower = 1;
 let isGodDisplay = false;
 let isGameActive = false;
 let mainbuttonClickCount = 0;
+let LuckeyEventCount = 0;
 
 function randommath() {
     return Math.floor(Math.random() * 3) + 8; // 8, 9, 10のいずれかをランダムに返す
@@ -44,6 +45,9 @@ function randommath() {
 mainbutton.addEventListener('click', function () {//メインボタンのクリックイベント
     mainClick();
     mainbuttonClickCount++;
+    if (mainbuttonClickCount % 2 == 0){
+        getLuckyDiscount(); // 2のクリックでラッキー割引を適用
+    }
 });
 ClickUpgradeBtn.addEventListener('click', function () {//クリックアップグレード
     if (clickUpgCost > count) {
@@ -59,6 +63,7 @@ ClickUpgradeBtn.addEventListener('click', function () {//クリックアップ�
         clickUpgCost = Math.floor(clickUpgCost * 1.1);
     }
     updateUpgradeInfo()
+    getLuckyDiscount(); // ラッキー割引の適用
 });
 MachineUpgradeBtn.addEventListener('click', function () {//機械化
     if (MachineUpgradeCost > count) {
@@ -73,6 +78,7 @@ MachineUpgradeBtn.addEventListener('click', function () {//機械化
         MachineUpgradeCost = Math.floor(MachineUpgradeCost * 1.15);
     }
     updateUpgradeInfo()
+    getLuckyDiscount();// ラッキー割引の適用
 });
 FactoryUpgradeBtn.addEventListener('click', function () {//工業化
     if (FactoryUpgradeCost > count) {
@@ -87,6 +93,7 @@ FactoryUpgradeBtn.addEventListener('click', function () {//工業化
         FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * 1.2);
     }
     updateUpgradeInfo()
+    getLuckyDiscount();// ラッキー割引の適用
 });
 GeneratorUpgradeBtn.addEventListener('click', function () {//ジェネレーター
     if (GeneratorUpgradeCost > count) {
@@ -101,6 +108,7 @@ GeneratorUpgradeBtn.addEventListener('click', function () {//ジェネレータ�
         GeneratorUpgradeCost = Math.floor(GeneratorUpgradeCost * 1.3);
     }
     updateUpgradeInfo()
+    getLuckyDiscount();// ラッキー割引の適用
 });
 GodUpgradeBtn.addEventListener('click', function () {//神の祝福
     if (GodUpgradeCost > count) {
@@ -149,6 +157,7 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
         GodUpgradeCost = Math.floor(GodUpgradeCost * (godpower));
     }
     updateUpgradeInfo();
+    getLuckyDiscount();// ラッキー割引の適用
 })
 
 function mainClick() {//クリックボタンの処理
@@ -275,6 +284,71 @@ function setsumei_close() {//説明を閉じる
 document.addEventListener(`contextmenu`, function (e) {
     e.preventDefault();
 })
+
+function getLuckyDiscount(){
+    const discountRate = Math.random() * 1000; // 0から1000の間のランダムな値を生成
+    if (discountRate <= 10){ // 1%の確率で割引イベントを発生させる
+        let discountAmount = Math.floor(Math.random() * 30) + 1; // 1から30の間のランダムな値を生成
+        showLuckyBanner(discountAmount); // バナーを表示
+        discountAmount = discountAmount / 100; // 割引率を小数に変換
+        clickUpgCost = Math.floor(clickUpgCost - (clickUpgCost * discountAmount));
+        MachineUpgradeCost = Math.floor(MachineUpgradeCost - (MachineUpgradeCost * discountAmount));
+        FactoryUpgradeCost = Math.floor(FactoryUpgradeCost - (FactoryUpgradeCost * discountAmount));
+        GeneratorUpgradeCost = Math.floor(GeneratorUpgradeCost - (GeneratorUpgradeCost * discountAmount));
+        GodUpgradeCost = Math.floor(GodUpgradeCost - (GodUpgradeCost * discountAmount));
+        LuckeyEventCount++; // ラッキーイベントのカウントを増やす
+        if (clickUpgCost < 10){
+            clickUpgCost = 10; // 最低コストを10に設定
+        }
+        if (MachineUpgradeCost < 10){
+            MachineUpgradeCost = 10; // 最低コストを10に設定
+        }
+        if (FactoryUpgradeCost < 10){
+            FactoryUpgradeCost = 10; // 最低コストを10に設定
+        }
+        if (GeneratorUpgradeCost < 10){
+            GeneratorUpgradeCost = 10; // 最低コストを10に設定
+        }
+        if (GodUpgradeCost < 10){
+            GodUpgradeCost = 10; // 最低コストを10に設定
+        }
+        document.getElementById("LUCKEY").textContent = `Luckey:${LuckeyEventCount}`; // ラッキーイベントの回数を表示
+        // アップグレード情報を更新
+        updateUpgradeInfo();
+    }
+}
+function showLuckyBanner(discountAmount) {
+    // 既存のバナーを削除
+    const existingBanner = document.querySelector('.lucky-banner');
+    if (existingBanner) {
+        existingBanner.remove();
+    }
+    
+    // バナーを作成
+    const banner = document.createElement('div');
+    banner.className = 'lucky-banner';
+    banner.innerHTML = `
+        <div class="banner-content">
+            <span class="banner-icon">🎉</span>
+            <span class="banner-text">LUCKY! アップグレードコストが${discountAmount}%減少しました！</span>
+            <button class="banner-close" onclick="this.parentElement.parentElement.remove()">×</button>
+        </div>
+    `;
+    
+    // bodyの最上部に追加
+    document.body.insertBefore(banner, document.body.firstChild);
+    
+    // アニメーション開始
+    setTimeout(() => banner.classList.add('show'), 10);
+    
+    // 5秒後に自動で削除
+    setTimeout(() => {
+        if (banner.parentNode) {
+            banner.classList.add('hide');
+            setTimeout(() => banner.remove(), 300);
+        }
+    }, 5000);
+}
 
 function debug(a, n) {//コンソールで叩けるやつ
     switch (a) {
