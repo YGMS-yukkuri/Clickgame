@@ -4,6 +4,9 @@
 [Googleスプレッドシート](https://docs.google.com/spreadsheets/d/1P9rJ0hNjFPZ7cqtDXymo_BhU8f-ms1tRS71UPgFbFgs/edit?usp=sharing)
 
 ## 2025-07-11
+- v1.3.1
+    - コストが下がり続けて0になってしまう不具合を修正
+    - アップグレードボタンのクリック数も総クリックに含めるようにした
 - v1.3.0_1
     - ラッキーの出現確率の変更
 - v1.3.0

@@ -1,4 +1,4 @@
-const GameVersion = "1.3.0_1"; //ゲームのバージョン
+const GameVersion = "1.3.1"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -53,11 +53,15 @@ ClickUpgradeBtn.addEventListener('click', function () {//クリックアップ�
     if (clickUpgCost > count) {
         return;
     }
+    mainbuttonClickCount++; // クリックアップグレードを行うとクリック数が増える
     count = count - clickUpgCost;
     clickUpg++;
     zouka++;
     if (zouka % 5 === 0) {//5の倍数かを判別
         clickUpgCost = Math.floor(clickUpgCost * (randommath() / 10));
+        if (clickUpgCost < 10) {
+            clickUpgCost = 10; // 最低コストを10に設定
+        }
     }
     else {
         clickUpgCost = Math.floor(clickUpgCost * 1.1);
@@ -69,10 +73,14 @@ MachineUpgradeBtn.addEventListener('click', function () {//機械化
     if (MachineUpgradeCost > count) {
         return;
     }
+    mainbuttonClickCount++; // クリックアップグレードを行うとクリック数が増える
     count = count - MachineUpgradeCost;
     MachineUpgradeCount++;
     if (MachineUpgradeCount % 5 === 0) {//5の倍数かを判別
         MachineUpgradeCost = Math.floor(MachineUpgradeCost * (randommath() / 10));
+        if (clickUpgCost < 10) {
+            clickUpgCost = 10; // 最低コストを10に設定
+        }
     }
     else {
         MachineUpgradeCost = Math.floor(MachineUpgradeCost * 1.15);
@@ -84,10 +92,14 @@ FactoryUpgradeBtn.addEventListener('click', function () {//工業化
     if (FactoryUpgradeCost > count) {
         return;
     }
+    mainbuttonClickCount++; // クリックアップグレードを行うとクリック数が増える
     count = count - FactoryUpgradeCost;
     FactoryUpgradeCount++;
     if (FactoryUpgradeCount % 5 === 0) {//5の倍数かを判別
         FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * (randommath() / 10));
+        if (clickUpgCost < 10) {
+            clickUpgCost = 10; // 最低コストを10に設定
+        }
     }
     else {
         FactoryUpgradeCost = Math.floor(FactoryUpgradeCost * 1.2);
@@ -99,10 +111,14 @@ GeneratorUpgradeBtn.addEventListener('click', function () {//ジェネレータ�
     if (GeneratorUpgradeCost > count) {
         return;
     }
+    mainbuttonClickCount++; // クリックアップグレードを行うとクリック数が増える
     count = count - GeneratorUpgradeCost;
     GeneratorUpgradeCount++;
     if (GeneratorUpgradeCount % 5 === 0) {//5の倍数かを判別
         GeneratorUpgradeCost = Math.floor(GeneratorUpgradeCost * (randommath() / 10));
+        if (clickUpgCost < 10) {
+            clickUpgCost = 10; // 最低コストを10に設定
+        }
     }
     else {
         GeneratorUpgradeCost = Math.floor(GeneratorUpgradeCost * 1.3);
@@ -114,6 +130,7 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
     if (GodUpgradeCost > count) {
         return;
     }
+    mainbuttonClickCount++; // クリックアップグレードを行うとクリック数が増える
     mainbutton.style.backgroundColor = "#ffe863"; //クリックボタンの色を変更
     count = count - GodUpgradeCost;
     GodUpgradeCount++;
@@ -152,6 +169,9 @@ GodUpgradeBtn.addEventListener('click', function () {//神の祝福
     if (GodUpgradeCount % 5 === 0) {//5の倍数かを判別
         //コストがランダムで減少する
         GodUpgradeCost = Math.floor(GodUpgradeCost * (randommath() / 10));
+        if (clickUpgCost < 10) {
+            clickUpgCost = 10; // 最低コストを10に設定
+        }
     }
     else {
         GodUpgradeCost = Math.floor(GodUpgradeCost * (godpower));
