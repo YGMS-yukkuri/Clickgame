@@ -1,4 +1,4 @@
-const GameVersion = "1.2.7"; //ゲームのバージョン
+const GameVersion = "1.2.7_1"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
