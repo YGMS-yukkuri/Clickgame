@@ -1,4 +1,4 @@
-const GameVersion = "1.3.0"; //ゲームのバージョン
+const GameVersion = "1.3.0_1"; //ゲームのバージョン
 const mainbutton = document.querySelector("#mainbtn");
 const ClickUpgradeBtn = document.querySelector("#ClickUpgrade");
 const MachineUpgradeBtn = document.querySelector('#AutoUpgrade1');
@@ -287,7 +287,7 @@ document.addEventListener(`contextmenu`, function (e) {
 
 function getLuckyDiscount(){
     const discountRate = Math.random() * 1000; // 0から1000の間のランダムな値を生成
-    if (discountRate <= 10){ // 1%の確率で割引イベントを発生させる
+    if (discountRate <= 5){ // 1%の確率で割引イベントを発生させる
         let discountAmount = Math.floor(Math.random() * 30) + 1; // 1から30の間のランダムな値を生成
         showLuckyBanner(discountAmount); // バナーを表示
         discountAmount = discountAmount / 100; // 割引率を小数に変換
@@ -404,6 +404,8 @@ function reset() {//ゲームのリセットを行うやつ
     document.getElementById("senddata").disabled = false;
     document.getElementById("senddata").innerText = "クリアデータを送信";
     mainbutton.style.backgroundColor = "#64e8e8f3"; //クリックボタンの色を元に戻す
+    LuckeyEventCount = 0; // ラッキーイベントのカウントをリセット
+    document.getElementById("LUCKEY").textContent = `Luckey:${LuckeyEventCount}`; // ラッキーイベントの回数を表示
     console.log("Game has been reset.");
 }
 function timecount() {
